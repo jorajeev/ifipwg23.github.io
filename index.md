@@ -10,7 +10,7 @@ IFIP Working Group 2.3 on Programming Methodology is a [working group](https://i
 
 # Scope
 
-Our scope of work was introduced by Edsger W. Dijkstra in meeting 0 (Oslo, Norway, July 1969):
+Our scope of work was introduced by Edsger W. Dijkstra in Meeting 0 (Oslo, Norway, July 1969):
 * Identification of sources of difficulties encountered in present-day programming;
 * The interdependence between the formulation of problems and the formulation of programs, and the mapping of relations existing in the world of problems into the relations among programs and their components;
 * Intellectual disciplines and problem-solving techniques that can aid programmers in the composition of programs;
