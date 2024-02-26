@@ -4,11 +4,11 @@ title: Overview
 nav_order: 1
 ---
 
-# Overview
+<h2>Overview</h2>
 
 IFIP Working Group 2.3 on Programming Methodology is a [working group](https://ifip.hal.science/IFIP-WG) of the [International Federation for Information Processing (IFIP)](http://ifip.org).  Our main goal is to increase programmers’ ability to compose programs. We provide an international forum for discussion and cross-fertilization of ideas between researchers in programming methodology and related fields. Typically, members report on work in progress and expect suggestions and advice. Discussions are often broadened by inviting "observers" to meetings as full participants, some of whom eventually become members.
 
-# Scope
+<h2>Scope</h2>
 
 Our scope of work was introduced by Edsger W. Dijkstra in Meeting 0 (Oslo, Norway, July 1969):
 * Identification of sources of difficulties encountered in present-day programming;
