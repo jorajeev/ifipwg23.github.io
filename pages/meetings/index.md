@@ -6,14 +6,14 @@ has_children: true
 has_toc: false
 ---
 
-<h2>Next Meeting</h2>
+<!-- <h2>Next Meeting</h2>
   {% assign all_pages = site.pages %}
   {% assign meetings = all_pages | where: "dir", "/pages/meetings/" %}
   {% assign post = meetings | last %}
   <li><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}, {{ post.location }}, {{ post.date }}</a></li>
+ -->
 
-
-<h2>Past Meetings</h2>
+<h2>Meetings</h2>
 
 <h3>=== UNDER CONSTRUCTION ===</h3>
 
