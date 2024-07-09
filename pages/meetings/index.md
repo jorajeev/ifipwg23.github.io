@@ -22,7 +22,7 @@ has_toc: false
 <ul>
   {% assign all_pages = site.pages %}
   {% assign meetings = all_pages | where: "dir", "/pages/meetings/" %}
-  {% assign last_index = meetings.size | minus: 1 %}
+  {% assign last_index = meetings.size | minus: 0 %}
   {% assign past_meetings = meetings | slice: 0, last_index %}
   {% for post in past_meetings %}
       <li><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}, {{ post.location }}, {{ post.date }}</a></li>
