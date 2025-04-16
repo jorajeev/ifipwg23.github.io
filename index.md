@@ -19,3 +19,4 @@ Our scope of work was introduced by Edsger W. Dijkstra in Meeting 0 (Oslo, Norwa
 * The problem of provability of program correctness and its influence on the structure of programs and on the process of their composition;
 * Guidelines of partitioning large programming tasks and defining the interfaces between the parts;
 * Software for mechanized assistance to program composition.
+
