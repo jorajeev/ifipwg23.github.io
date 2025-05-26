@@ -63,7 +63,7 @@ These costs **will not cover dinner and breakfast**.
 <h3>Monday 19 May</h3>
 <ul>
 <li><b>All attendees</b>, roundtable introduction</li>
-<li><b>Peter Müller</b>, Hyper Hoare Logic</li>
+<li><b>Peter Müller</b>, <a href="../../assets/meetings/meeting-069/mueller.pdf">Hyper Hoare Logic</a></li>
 <li><b>Brijesh Dongol</b>, <a href="../../assets/meetings/meeting-069/dongol.pdf">Correctly Programming Remote Direct Memory Access</a></li>
 <li><b>Oded Padon</b>, Duality and primal-dual algorithms in program verification</li>
 <li><b>Justin Hsu</b>, <a href="../../assets/meetings/meeting-069/hsu.pdf">Type Systems for Numerical Error Analysis</a></li>
