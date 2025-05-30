@@ -75,7 +75,7 @@ These costs **will not cover dinner and breakfast**.
 <li><b>Rustan Leino</b>, </li>
 <li><b>Alberto Griggio</b>, Information exchange for software verification</li>
 <li><b>Clement Pit-Claudel</b>, Modern regular expressions, with a focus on semantics and matching complexity</li>
-<li><b>Mae Milano</b>, </li>
+<li><b>Mae Milano</b>, <a href="../../assets/meetings/meeting-069/milano.pdf">Gambit: sequential consistency without coordination in distributed programming languages</a></li>
 <li><b>Ori Lahav</b>, <a href="../../assets/meetings/meeting-069/lahav.pdf">Hyperproperty-Preserving Register Specifications</a></li>
 <li><b>Roderick Bloem</b>, Learning a Mealy machine from a language</li>
 <li><b>Viktor Vafeiadis</b>, Automatically establishing correctness of concurrent libraries</li>
