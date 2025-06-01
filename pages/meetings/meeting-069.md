@@ -72,7 +72,7 @@ These costs **will not cover dinner and breakfast**.
 
 <h3>Tuesday 20 May</h3>
 <ul>
-<li><b>Rustan Leino</b>, </li>
+<li><b>Rustan Leino</b>, <a href="../../assets/meetings/meeting-069/leino.pdf">Reasoning about allocation</a></li>
 <li><b>Alberto Griggio</b>, Information exchange for software verification</li>
 <li><b>Clement Pit-Claudel</b>, Modern regular expressions, with a focus on semantics and matching complexity</li>
 <li><b>Mae Milano</b>, <a href="../../assets/meetings/meeting-069/milano.pdf">Gambit: sequential consistency without coordination in distributed programming languages</a></li>
