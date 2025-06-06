@@ -85,7 +85,7 @@ These costs **will not cover dinner and breakfast**.
 <ul>
 <li><b>Cliff Jones</b>, <a href="../../assets/meetings/meeting-069/jones.pdf">Rely-Guarantee `thinking’ for Real-Time Scheduling</a></li>
 <li><b>Zoe Paraskevopoulou</b>, Correctness for the Ground Up for Ethereum Smart Contracts</li>
-<li><b>Alex Summers</b>, Place Capability Graphs: A General-Purpose Model of Rust’s Ownership and Borrowing System</li>
+<li><b>Alex Summers</b>, <a href="../../assets/meetings/meeting-069/summers.pdf">Place Capability Graphs: A General-Purpose Model of Rust’s Ownership and Borrowing System</a></li>
 <li><b>Roland Meyer</b>, <a href="../../assets/meetings/meeting-069/meyer.pdf">Verification under Weak Consistency and Recent Decidability Results in Verification</a></li>
 </ul>
 
