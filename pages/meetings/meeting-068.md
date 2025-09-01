@@ -37,7 +37,7 @@ parent: Meetings
 
 <h3>Thursday 9</h3>
 <ul>
-<li><b>Rustan Leino</b>, Encoding partial functions into total logic</li>
+<li><b>Rustan Leino</b>, <a href="../../assets/meetings/meeting-068/leino.pdf">Encoding partial functions into total logic</a></li>
 <li><b>Sebastian Wolff</b>, Embedding Hindsight Reasoning in Separation Logic</li>
 <li><b>Thomas Wies</b>, Conditional Atomicity Reduction</li>
 <li><b>Thomas Wies</b>, Raven: A deductive verifier for concurrent separation logic</li>
@@ -47,5 +47,5 @@ parent: Meetings
 
 <h3>Friday 10 May</h3>
 <ul>
-<li><b>Patrick Cousot<b>, A Logic for Parallel Programs</li>
+<li><b>Patrick Cousot</b>, A Logic for Parallel Programs</li>
 </ul>

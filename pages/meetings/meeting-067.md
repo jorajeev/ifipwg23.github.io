@@ -17,7 +17,7 @@ parent: Meetings
 <li><b>Peter Müller</b>,<a href="../../assets/meetings/meeting-067/Trento-PeterMueller-CommCSL.pdf">Proving Information Flow Security for Concurrent Programs</a></li>
 <li><b>Manfred Broy</b>,<a href="../../assets/meetings/meeting-067/Broy_IFIP_Trento2023.pdf">Interaction, Concurrency, Nondeterminism, Time, Composition, Distribution, Abstraction: An Interface Centric Approach. Practical and Theoretical Consequences</a></li>
 <li><b>Shankar</b>,The Kernel of Truth</li>
-<li><b>Rustan Leino</b>,Tracked Regions</li>
+<li><b>Rustan Leino</b>,<a href="../../assets/meetings/meeting-067/leino.html">Tracked Regions</a></li>
 
 </ul>
 

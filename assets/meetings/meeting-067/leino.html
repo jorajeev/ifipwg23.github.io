@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta name="generator" content="Madoko, version 1.2.3" />
+  <meta name="viewport" content="initial-scale=1.0" />
+  <title>Tracked regions</title>
+  <style type="text/css"  class="link">
+  /*# sourceURL=madoko.css */
+  
+  .madoko .toc>.tocblock .tocblock .tocblock {
+    margin-left: 2.25em;
+  }
+  .madoko .toc>.tocblock .tocblock {
+    margin-left: 1.5em;
+  }
+  .madoko .toc-contents>.tocblock>.tocitem {
+    font-weight: bold;
+  }
+  .madoko .toc {
+    margin-top: 1em;
+  }
+  .madoko p.para-continue {
+    margin-bottom: 0pt;
+  }
+  .madoko .para-block+p {
+    margin-top: 0pt;
+  }
+  .madoko ul.para-block, .madoko ol.para-block {
+    margin-top: 0pt;
+    margin-bottom: 0pt;
+  }
+  .madoko ul.para-end, .madoko ol.para-end {
+    margin-bottom: 1em;
+  }
+  .madoko dl {
+    margin-left: 0em;
+  }
+  .madoko blockquote {
+    font-style: italic;
+  }
+  .madoko a.localref {
+    text-decoration: none;
+  }
+  .madoko a.localref:hover {
+    text-decoration: underline;
+  }
+  .madoko .footnotes {
+    font-size: smaller;
+    margin-top: 2em;
+  }
+  .madoko .footnotes hr {
+    width: 50%;
+    text-align: left;
+  }
+  .madoko .footnote {
+    margin-left: 1em;
+  }
+  .madoko .footnote-before {
+    margin-left: -1em;
+    width: 1em;
+    display: inline-block;
+  }
+  .madoko .align-center, .madoko .align-center>p {
+    text-align: center !important;
+  }
+  .madoko .align-center pre {
+    text-align: left;
+  }
+  .madoko .align-center>* {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .madoko .align-left, .madoko .align-left>p {
+    text-align: left !important;
+  }
+  .madoko .align-left>* {
+    margin-left: 0pt !important;
+    margin-right: auto !important;
+  }
+  .madoko .align-right, .madoko .align-right>p {
+    text-align: right !important;
+  }
+  .madoko .align-right>* {
+    margin-left: auto !important;
+    margin-right: 0pt !important;
+  }
+  .madoko .align-center>table,
+  .madoko .align-left>table,
+  .madoko .align-right>table {
+    text-align: left !important;
+  }
+  .madoko .equation-before {
+    float: right;
+  }
+  .madoko .bibitem {
+    font-size: smaller;
+  }
+  .madoko .bibsearch {
+    font-size: x-small;
+    text-decoration:none;
+    color: black;
+    font-family: "Segoe UI Symbol", Symbola, serif;
+  }
+  .madoko .block, .madoko .figure, .madoko .bibitem, .madoko .equation, .madoko div.math {
+    margin-top: 1ex;
+    margin-bottom: 1ex;
+  }
+  .madoko .figure {
+    padding: 0.5em;
+    margin-left: 0pt;
+    margin-right: 0pt;
+  }
+  .madoko .hidden {
+    display: none;
+  }
+  .madoko .invisible {
+    visibility: hidden;
+  }
+  .madoko.preview .invisible {
+    visibility: visible;
+    opacity: 0.5;
+  }
+  .madoko code.code, .madoko span.code {
+    white-space: pre-wrap;
+  }
+  .madoko hr, hr.madoko {
+    border: none;
+    border-bottom: black solid 1px;
+    margin-bottom: 0.5ex;
+  }
+  .madoko .framed>*:first-child {
+    margin-top: 0pt;
+  }
+  .madoko .framed>*:last-child {
+    margin-bottom: 0pt;
+  }
+  .madoko ul.list-style-type-dash {
+      list-style-type: none !important;
+  }
+  .madoko ul.list-style-type-dash > li:before {
+      content: "\2013";
+      position: absolute;
+      margin-left: -1em;
+  }
+  .madoko table.madoko {
+    border-collapse: collapse;
+  }
+  .madoko td, .madoko th {
+    padding: 0ex 0.5ex;
+    margin: 0pt;
+    vertical-align: top;
+  }
+  .madoko .cell-border-left {
+    border-left: 1px solid black;
+  }
+  .madoko .cell-border-right {
+    border-right: 1px solid black;
+  }
+  .madoko thead>tr:first-child>.cell-line,
+  .madoko tbody:first-child>tr:first-child>.cell-line {
+    border-top: 1px solid black;
+    border-bottom: none;
+  }
+  .madoko .cell-line, .madoko .cell-double-line {
+    border-bottom: 1px solid black;
+    border-top: none;
+  }
+  .madoko .cell-double-line {
+    border-top: 1px solid black;
+    padding-top: 1.5px !important;
+  }
+  .madoko .input-mathpre .MathJax_Display {
+    text-align: left !important;
+  }
+  .madoko div.input-mathpre {
+    text-align: left;
+    margin-top: 1.5ex;
+    margin-bottom: 1ex;
+  }
+  .madoko .math-rendering {
+    text-align: left;
+    white-space: pre;
+    color: gray;
+  }
+  .madoko .mathdisplay {
+    text-align: center;
+  }
+  .madoko span.math-rendering {
+    display:inline-block;
+    width:8em;
+    overflow-x:auto;
+    font-size:70%;
+  }
+  .madoko span.math-rendering::-webkit-scrollbar {
+    width:4px;
+  }
+  .madoko .pretty table {
+    border-collapse: collapse;
+  }
+  .madoko .pretty td {
+    padding: 0em;
+  }
+  .madoko .pretty td.empty {
+    min-width: 1.5ex;
+  }
+  .madoko .pretty td.expander {
+    width: 100em;
+  }
+  body.madoko, .madoko .serif {
+    font-family: Cambria,"Times New Roman","Liberation Serif","Times",serif;
+  }
+  .madoko .sans-serif {
+    font-family: "Calibri", "Optima", sans-serif;
+  }
+  .madoko .symbol {
+    font-family: "Segoe UI Symbol", Symbola, serif;
+  }
+  body.madoko {
+    -webkit-text-size-adjust: 100%;       
+    text-rendering: optimizeLegibility;
+  }
+  body.madoko {
+    max-width: 88ex; 
+    margin: 1em auto;
+    padding: 0em 2em;
+  }
+  body.preview.madoko {
+    padding: 0em 1em;
+  }
+  .madoko p {
+    text-align: justify;
+  }
+  .madoko h1, .madoko h2, .madoko h3, .madoko h4 {
+    margin-top: 1.22em;
+    margin-bottom: 1ex;
+  }
+  .madoko h1+p, .madoko h2+p, .madoko h3+p, .madoko h4+p, .madoko h5+p  {
+    margin-top: 1ex;
+  }
+  .madoko h5, .madoko h6 {
+    margin-top: 1ex;
+    font-size: 1em;
+  }
+  .madoko h5 {
+    margin-bottom: 0.5ex;
+  }
+  .madoko h5 + p {
+    margin-top: 0.5ex;
+  }
+  .madoko h6 {
+    margin-bottom: 0pt;
+  }
+  .madoko h6 + p {
+    margin-top: 0pt;
+  }
+  .madoko pre, .madoko code, .madoko kbd, .madoko samp, .madoko tt,
+  .madoko .monospace, .madoko .token-indent, .madoko .reveal pre, .madoko .reveal code, .madoko .email {
+    font-family: Consolas,"Andale Mono WT","Andale Mono",Lucida Console,Monaco,monospace,monospace;
+    font-size: 0.85em;
+  }
+  .madoko pre code, .madoko .token-indent {
+    font-size: 0.95em;
+  }
+  .madoko pre code {
+    font-family: inherit !important;
+  }
+  .madoko ol.linenums li {
+    background-color: white;
+    list-style-type: decimal;
+  }
+  .madoko .remote {
+    background-color: #F0FFF0;
+  }
+  .madoko .remote + * {
+    margin-top: 0pt;
+  }
+  @media print {
+    body.madoko {
+      font-size: 10pt;
+    }
+    @page {
+      margin: 1in 1.5in;
+    }
+  }
+  @media only screen and (max-device-width:1024px) {
+    body.madoko {
+      padding: 0em 0.5em;
+    }
+    .madoko li {
+      text-align: left;
+    }
+  }
+  
+    </style>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/reveal.js/2.6.2/css/reveal.min.css"  class="link">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/reveal.js/2.6.2/css/theme/solarized.css"  class="link">
+  <script src="https://cdn.jsdelivr.net/reveal.js/2.6.2/lib/js/head.min.js"  class="script preview"></script>
+  <script src="https://cdn.jsdelivr.net/reveal.js/2.6.2/js/reveal.js"  class="script preview"></script>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/reveal.js/2.6.2/css/theme/solarized.css" id="theme">    
+      <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/reveal.js/2.6.2/lib/js/html5shiv.js"></script>
+      <![endif]-->
+      <style>
+      body.madoko {
+        margin: 0pt;
+        padding: 0pt;
+        max-width: 100%;      
+      }
+      .madoko .reveal h1 {
+          font-size: 3.7em;
+      }
+      .madoko .reveal h2 {
+          font-size: 2.1em;
+      }
+      .reveal .authorblock .author {
+          font-size: 120%;
+          margin-bottom: 1ex;
+      }        
+      .reveal table {
+          margin-left: auto;
+          margin-right: auto;
+      }
+      .reveal pre table {
+        margin-left: 0pt;
+      }
+      .madoko .reveal pre.pretty {
+        padding-top: 0pt;
+        padding-bottom: 0pt;
+      }
+      .reveal li p {
+          text-align: left;
+      }
+      .reveal h2 {
+          margin-bottom: 0.7em;
+      }
+      .reveal section ul,
+      .reveal section ol {
+          margin-top: 0.35em;
+          margin-bottom: 0.35em;
+      }
+      .reveal section img.math-display {
+          padding: 1em;
+          box-shadow: none;
+          border: none;
+      }
+      .reveal section img.math-inline {
+          margin: 0pt;
+          padding: 0pt;
+          background-color: none;
+          box-shadow: none;
+          border: none;
+      }
+      .reveal section img {
+          box-shadow: none;
+          border: none;
+      }
+      .madoko .reveal pre {
+          border: 1px solid black;
+          word-wrap: normal;
+          background-color: white;
+          font-size: 0.7em;
+          padding: 0.7em;
+          line-height: 100%;
+          width: 100%;
+      }      
+      .reveal pre code, .reveal code {
+          padding: 0pt;
+      }
+      .reveal nav.toc {
+          line-height: 1em;
+          font-size: 60%;
+          overflow-y: auto;
+      }    
+      .reveal .tocitem {
+          text-align: left;
+      }
+      .reveal .toc>.tocblock .tocblock {
+          margin-left: 0.5em;
+      }   
+      .reveal .toc>.tocblock .tocblock .tocblock {
+          margin-left: 1em;
+      }
+      .reveal .bibliography {
+        height: 18em;
+        overflow-y: auto;
+        font-size: 0.8em;
+        line-height: 1.25;
+      }
+      .reveal section[data-smaller=""],
+      .reveal section[data-smaller="true"] {
+        font-size: 80%;
+        width: 110%;
+      }
+      .reveal .slides>section[data-smaller=""],
+      .reveal .slides>section[data-smaller="true"] {
+        left: -55%;
+      }
+      .reveal .details {
+        display: none;
+      }
+      .reveal[data-details=""] .details,
+      .reveal[data-details="true"] .details {
+        display: initial;
+      }
+      /* Display in the preview window */
+      html, body.madoko.preview, body.madoko.preview-full, .body.madoko {
+        height  : 100% !important;
+        width   : auto!important;
+        padding : 0pt !important;
+        margin  : 0pt !important;
+      }
+      body.madoko.preview, body.madoko.preview-full, .preview .body.madoko {
+        overflow: hidden !important;
+      }
+      body.preview .reveal .slides .fragment {
+        visibility: visible;
+        opacity: 0.5;
+      }
+      body.preview .reveal .slides .fragment.visible {
+        opacity: 1.0;
+      }
+      .preview .reveal div.notes,
+      .preview .reveal aside.notes {
+        display  : block;
+        position : absolute;
+        width    : 30%;
+        left     : 70%;
+        top      : -15%;
+        font-size: 50%;
+        border   : 1px solid black;
+        border-radius   : 10px;
+        background-color: white;
+      }
+      /* 'static' display in the preview window, unused for now */
+      body.preview.static div.reveal, 
+      body.preview.static div.ticreveal .slides, 
+      body.preview.static div.reveal section {
+        display: block !important;
+        position: relative !important;
+        width: auto !important;      
+      }
+      body.preview.static div.reveal section {
+        border: solid 1px black;
+        padding: 1em !important;
+        margin-top: 1em;
+        min-height: 15em;
+        top: 0pt;
+      }
+      body.madoko.preview.static section {
+        font-size: 75%;
+      }
+      body.madoko.preview.static {
+        padding: 0em 1em !important;
+      }
+      body.madoko.preview.static .reveal pre {
+        width: 95%;
+      }    
+      body.preview .reveal[data-details="false"] .details {
+        display: initial;
+        color: gray;
+      }
+      body.preview .reveal[data-long="false"] section[data-long] {
+        border-left: 2px black solid;
+      }
+      </style>
+      <script>    
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      window.revealConfig = {
+          controls: true,
+          progress: true,
+          history: true,
+          center: /^\s*(true|1)\s*$/i.test("true"),
+          slideNumber: /^\s*(true|1)\s*$/i.test("true"),
+          dependencies: [
+            { src: 'https://cdn.jsdelivr.net/reveal.js/2.6.2/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'https://cdn.jsdelivr.net/reveal.js/2.6.2/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: 'https://cdn.jsdelivr.net/reveal.js/2.6.2/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+          ],
+      };
+      function revealAddFragments() {
+        [].forEach.call(document.querySelectorAll( ".fragmented" ), function(elem0) {
+          var elem = (/^H\d$/.test(elem0.nodeName) ? elem0.parentNode : elem0);
+          [].forEach.call(elem.children, function(item) {
+            if (item==elem0) return;
+            if (item && !/\bfragment(ed)?\b/.test(item.className) && item.nodeType===1) {
+              item.className = item.className + " fragment";
+            }
+          });
+        });
+      }
+      function revealQuotedList(listType) {
+        //compatibility with Rmarkdown slides
+        [].forEach.call( document.querySelectorAll("blockquote>" + listType), function(ul) {
+          if (!/\bfragmented\b/.test(ul.className)) {
+            ul.className = ul.className + " fragmented";
+          }        
+          var quote = ul.parentNode;
+          if (quote.childElementCount===1) {
+            quote.parentNode.replaceChild(ul,quote);
+          }
+        });
+      }
+      function revealBuildToFragmented() {
+        [].forEach.call(document.querySelectorAll( ".build" ), function(elem) {
+          if (elem && !/\bfragmented\b/.test(elem.className) && elem.nodeType===1) {
+            elem.className = elem.className + " fragmented";
+          }
+        });
+      }
+      function revealDivNotesToAside() {
+        [].forEach.call(document.querySelectorAll("div.notes"), function(elem) {
+          var aside = document.createElement("ASIDE");
+          if (elem.id) aside.id = elem.id;
+          aside.className = elem.className;
+          [].forEach.call(elem.attributes, function(attr) {
+            aside.setAttribute( attr.name, attr.value );
+          });
+          aside.innerHTML = elem.innerHTML;
+          elem.parentNode.replaceChild(aside,elem);
+        });
+      }
+      function revealDataQuery() {
+        var reveal = document.querySelector(".reveal");
+        if (!reveal) return;
+        window.location.search.replace(/\bdata-(\w+)(?:=(\w+))?\b/g, function(matched,key,value) {
+          reveal.setAttribute("data-" + key, (value ? value : ""));
+          return matched;
+        });
+      }
+      function revealRemoveLong() {
+        // remove parts for 'long' presentation
+        if (/\bpreview(?![\w\-])/.test(document.body.className)) return;
+        var reveal = document.querySelector(".reveal");
+        if (!reveal) return;
+        var value = reveal.hasAttribute("data-long") ? reveal.getAttribute("data-long") : null;
+        if (value==null || value=="false" || value=="0") {
+          [].forEach.call( document.querySelectorAll("section[data-long]"), function(elem) {
+            elem.parentNode.removeChild(elem);
+          });
+        }
+      }
+      revealConfig.onLoad = function() {
+        revealConfig.getEmbeddedImages();
+        revealDataQuery();
+        revealRemoveLong();
+        revealQuotedList("ul");
+        revealQuotedList("ol");
+        revealBuildToFragmented();
+        revealDivNotesToAside();
+        revealAddFragments();
+      };
+      document.addEventListener("load",revealConfig.onLoad);    
+      document.addEventListener("DOMContentLoaded", function() {
+        if (typeof Reveal !== "undefined" && !Reveal.isReady()) {
+          revealConfig.onLoad();
+          Reveal.initialize(revealConfig);
+        }
+      });    
+      // add support for printing:
+      // use  ?print-pdf to get a pdf-printable version (in Chrome)
+      // use  ?print-paper to get a paper-printable version.
+      revealConfig.initPrint = function() {
+        var cssLink = null;
+        var bodyClass = null;
+        var cap = window.location.search.match(/\bprint-(\w+)\b/);
+        if (cap) {
+          bodyClass = cap[0];
+          cssLink = "https://cdn.jsdelivr.net/reveal.js/2.6.2/css/print/" + cap[1] + ".css";
+        }
+        if (cssLink) {
+          var link  = document.createElement( "link" );
+          link.rel  = "stylesheet";
+          link.type = "text/css";
+          link.href = cssLink;
+          var head = document.getElementsByTagName( 'head' )[0];
+          if (head) head.appendChild( link );
+        }
+        if (bodyClass) {
+          document.body.className = document.body.className + " " + bodyClass;
+        }
+      };
+      revealConfig.getEmbeddedImages = function() {
+        var images = {};
+        [].forEach.call( document.querySelectorAll("img[data-linkid]"), function(img) {
+          var linkid = img.getAttribute("data-linkid");
+          if (linkid) images["/" + linkid] = img.src;
+          var path = img.getAttribute("data-path");
+          if (path) images["/" + path] = img.src;
+        });     
+        [].forEach.call( document.querySelectorAll("section"), function(slide) {
+          var attrName = "data-background";
+          var image = slide.getAttribute(attrName);
+          if (!image) {
+            attrName = "data-background-image";
+            image = slide.getAttribute(attrName);
+          }
+          if (!image) return;
+          var cap = /^\s*!?\[([^\]]+)\]\s*$/.exec(image);
+          var href = images["/" + (cap ? cap[1] : image)];
+          if (!href) return;
+          if (attrName==="data-background" && /^data:/.test(href)) href = "url(" + href + ")";
+          slide.setAttribute(attrName, href);
+        });
+      };    
+      </script>
+  <link href="https://fonts.cdnfonts.com/css/amazon-ember" rel="stylesheet">
+  <style>
+    .special-header {
+            position: absolute;
+            padding: 10px 20px 10px 20px;
+            top:30px;
+            left: 0px;
+            z-index:500;
+            /*background-color: rgba(0,0,0,0.5)*/
+        }
+        .special-body {
+            margin: auto;
+            position: absolute;
+            top: 50%;
+            left: 0%;
+            /*-ms-transform: translate(-50%, 50%);*/
+            transform: translate(0%, -50%);
+        }
+        .slides>section{
+            width: 100%;
+            height: 100%;
+        }
+        .reveal p {
+            text-align: left;
+        }
+        .reveal ul {
+            display: block;
+        }
+        .reveal ol {
+            display: block;
+        }  
+        .madoko .reveal pre {
+            font-size: 1.5em;
+        }
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+            font-family: 'Amazon Ember Display', sans-serif;
+            font-style: bold;
+            font-weight: 700;
+        }
+        .reveal ul {
+            font-family: 'Amazon Ember Display', sans-serif;
+            font-size: 80px;
+            line-height: 1.3;
+        }
+        .reveal ul ul {
+            font-family: 'Amazon Ember Display', sans-serif;
+            font-size: 60px;
+            line-height: 1.0;
+        }
+        .madoko pre code {
+        }
+        .reveal .slide-number {
+            font-size: 20px;
+        }
+        .reveal .slides {
+            top:45%;
+        }
+  </style>
+  </head>
+<body class="madoko">
+
+<div class="body madoko" style="line-adjust:0">
+<div class="reveal" data-long="false" data-details="false" data-line="122" style="line-adjust:0">
+<div class="slides" data-line="122" style="line-adjust:0">
+
+<section class="titleblock align-center para-block" data-line="123" style="text-align:center;line-adjust:0">
+<div class="titleheader align-center" data-line="123" style="text-align:center;line-adjust:0">
+<h1 class="title para-block" data-line="123" style="font-weight:bold;margin-bottom:0.5ex;font-size:3em;line-adjust:0"><span data-line="123"></span>Tracked regions</h1></div></section><!-- This file was automatically generated from wg23-Trento.mdk -->
+
+
+<section id="sec-tracked-regions" class="section section1" data-section-depth="1" data-line="128"><h2 id="heading-sec-tracked-regions" class="h1" data-heading-depth="1" style="display:block;font-size:100px">Tracked regions</h2>
+<div class="center align-center" data-line="130" style="text-align:center">
+<p class="p noindent" data-line="131"><span data-line="131"></span><span style="font-size:larger">K. Rustan M. Leino</span><span data-line="131"></span><br>
+<span data-line="131"></span>
+</p>
+<p class="p indent" data-line="133"><span data-line="133"></span>10 October 2023, IFIP WG 2.3, Trento, Italy</p></div></section>
+<section id="sec-a-simple-class" class="section section1" data-section-depth="1" data-line="136"><h2 id="heading-sec-a-simple-class" class="h1" data-heading-depth="1" style="display:block">A simple class</h2>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="138" data-line-first="139" style="display:block"><code data-line="139"><span style="color:blue">class</span> Cell {
+  <span style="color:blue">var</span> data: <span style="color:teal">int</span>
+
+  <span style="color:blue">method</span> Increment()
+    <span style="color:purple">modifies</span> <span style="color:blue">this</span>
+  {
+    data := data + <span class="constant" style="color:purple">1</span>;
+  }
+}</code></pre></section>
+<section id="sec-a-composite-class" class="section section1" data-section-depth="1" data-line="150"><h2 id="heading-sec-a-composite-class" class="h1" data-heading-depth="1" style="display:block">A composite class</h2>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="152" data-line-first="153" style="display:block"><code data-line="153"><span style="color:blue">class</span> Machine {
+  <span style="color:blue">var</span> motor: Motor
+  <span style="color:blue">var</span> screen: Monitor
+
+  <span style="color:blue">method</span> Operate()
+    <span style="color:purple">modifies</span> <span style="color:blue">this</span>, motor, screen
+  {
+    motor.Turn();
+    screen.Update();
+  }
+}</code></pre></section>
+<section id="sec-abstraction" class="section section1" data-section-depth="1" data-line="166"><h2 id="heading-sec-abstraction" class="h1" data-heading-depth="1" style="display:block">Abstraction</h2>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="168" data-line-first="169" style="display:block"><code data-line="169"><span style="color:blue">class</span> Machine {
+  <span style="color:blue">ghost</span> <span style="color:blue">var</span> Repr: <span style="color:teal">set</span>&lt;<span style="color:teal">object</span>&gt;
+  ...
+  <span style="color:blue">var</span> motor: Motor
+  <span style="color:blue">var</span> screen: Monitor
+
+  <span style="color:blue">method</span> Operate()
+    ...
+    <span style="color:purple">modifies</span> Repr
+  {
+    motor.Turn();
+    screen.Update();
+  }
+}</code></pre></section>
+<section id="sec-a-datatype" class="section section1" data-section-depth="1" data-line="185"><h2 id="heading-sec-a-datatype" class="h1" data-heading-depth="1" style="display:block">A datatype</h2>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="187" data-line-first="188" style="display:block"><code data-line="188"><span style="color:blue">datatype</span> Machine =
+  | Machine(motor: Motor, screen: Monitor)
+{
+  <span style="color:blue">method</span> OperateImmutable() <span style="color:blue">returns</span> (this&#39;: Machine)
+  {
+    <span style="color:blue">var</span> motor&#39; := motor.TurnImmutable();
+    <span style="color:blue">var</span> screen&#39; := screen.UpdateImmutable();
+    this&#39; := Machine(motor&#39;, screen&#39;);
+  }
+}</code></pre></section>
+<section id="sec-end-goal--confined-mutations" class="section section1" data-section-depth="1" data-line="200"><h2 id="heading-sec-end-goal--confined-mutations" class="h1" data-heading-depth="1" style="display:block">End goal: confined mutations</h2>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="202" data-line-first="203" style="display:block"><code data-line="203"><span style="color:blue">datatype</span> Machine =
+  | Machine(r: <span style="color:teal">region</span>, motor: Motor, screen: Monitor)
+{
+  <span style="color:blue">method</span> OperateImmutable() <span style="color:blue">returns</span> (this&#39;: Machine)
+  {
+    <span style="color:blue">var</span> Machine(r, motor, screen) := <span style="color:blue">this</span>;
+    motor.Turn();
+    screen.Update();
+    this&#39; := Machine(r, motor, screen);
+  }
+}</code></pre>
+<p class="p noindent para-continued" data-line="216" style="font-size:50px"><span data-line="216"></span>The immutable datatype uses a region that it modifies, and the client never needs to know!</p></section>
+<section id="sec-regions" class="section section1" data-section-depth="1" data-line="219"><h2 id="heading-sec-regions" class="h1" data-heading-depth="1" style="display:block">Regions</h2>
+<div class="fragment" data-line="221">
+<ul class="ul list-star compact" data-line="222">
+<li class="li ul-li list-star-li compact-li" data-line="222"><span data-line="222"></span>A <span data-line="222"></span><em class="em-low1">programming device</em><span data-line="222"></span> for pooling allocations, allowing efficient simultaneous deallocation</li></ul></div>
+<div class="fragment" data-line="224">
+<ul class="ul list-star compact" data-line="225">
+<li class="li ul-li list-star-li compact-li" data-line="225"><span data-line="225"></span>A <span data-line="225"></span><em class="em-low1">specification device</em><span data-line="225"></span> for separating and abstracting over groups of objects</li></ul></div></section>
+<section id="sec-global-heap" class="section section1" data-section-depth="1" data-line="228"><h2 id="heading-sec-global-heap" class="h1" data-heading-depth="1" style="display:block">Global heap</h2>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="230" data-line-first="231" style="display:block"><code data-line="231"><span style="color:blue">class</span> Cell {
+  <span style="color:blue">var</span> data: <span style="color:teal">int</span>
+}
+
+<span style="color:blue">method</span> Inc(c: Cell)
+  <span style="color:purple">modifies</span> c
+{
+  c.data := c.data + <span class="constant" style="color:purple">1</span>;
+}</code></pre></section>
+<section id="sec-heap-as-parameter" class="section section1" data-section-depth="1" data-line="242"><h2 id="heading-sec-heap-as-parameter" class="h1" data-heading-depth="1" style="display:block">Heap as parameter</h2>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="244" data-line-first="245" style="display:block"><code data-line="245"><span style="color:blue">method</span> Inc(<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>: Heap, c: Cell) <span style="color:blue">returns</span> (<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>: Heap)
+  <span style="color:purple">modifies</span> c
+{
+  c.data := c.data + <span class="constant" style="color:purple">1</span>;
+}</code></pre></section>
+<section id="sec-heap-as-in-out-parameter" class="section section1" data-section-depth="1" data-line="252"><h2 id="heading-sec-heap-as-in-out-parameter" class="h1" data-heading-depth="1" style="display:block">Heap as in-out parameter</h2>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="254" data-line-first="255" style="display:block"><code data-line="255"><span style="color:blue">method</span> Inc`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>(c: Cell)
+  <span style="color:purple">modifies</span> c
+{
+  c.data := c.data + <span class="constant" style="color:purple">1</span>;
+}</code></pre></section>
+<section id="sec-multiple-regions" class="section section1" data-section-depth="1" data-line="262"><h2 id="heading-sec-multiple-regions" class="h1" data-heading-depth="1" style="display:block">Multiple regions</h2>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="264" data-line-first="265" style="display:block"><code data-line="265"><span style="color:blue">method</span> Inc`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.8550em" viewBox='88.468 54.829 8.143 7.206'><desc>$\mathcal{K}$</desc><g id='math-fdbbc7'><use x='88.667' y='61.836' xlink:href='#g2-75'/></g></svg></span>`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.7644em" viewBox='34.67 54.829 7.28 7.206'><desc>$\mathcal{L}$</desc><g id='math-5dcbf6'><use x='34.869' y='61.836' xlink:href='#g2-76'/></g></svg></span>(c: Cell`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>, d: Cell`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.8550em" viewBox='88.468 54.829 8.143 7.206'><desc>$\mathcal{K}$</desc><g id='math-fdbbc7'><use x='88.667' y='61.836' xlink:href='#g2-75'/></g></svg></span>, e: Cell`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.7644em" viewBox='34.67 54.829 7.28 7.206'><desc>$\mathcal{L}$</desc><g id='math-5dcbf6'><use x='34.869' y='61.836' xlink:href='#g2-76'/></g></svg></span>)
+  <span style="color:purple">modifies</span> c`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>
+{
+  c`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>.data := c`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>.data + d`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.8550em" viewBox='88.468 54.829 8.143 7.206'><desc>$\mathcal{K}$</desc><g id='math-fdbbc7'><use x='88.667' y='61.836' xlink:href='#g2-75'/></g></svg></span>.data + e`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.7644em" viewBox='34.67 54.829 7.28 7.206'><desc>$\mathcal{L}$</desc><g id='math-5dcbf6'><use x='34.869' y='61.836' xlink:href='#g2-76'/></g></svg></span>.data;
+}</code></pre></section>
+<section id="sec-inferring-region-mode-of-types" class="section section1" data-section-depth="1" data-line="272"><h2 id="heading-sec-inferring-region-mode-of-types" class="h1" data-heading-depth="1" style="display:block">Inferring region &#8220;mode&#8221; of types</h2>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="274" data-line-first="275" style="display:block"><code data-line="275"><span style="color:blue">method</span> Inc`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.8550em" viewBox='88.468 54.829 8.143 7.206'><desc>$\mathcal{K}$</desc><g id='math-fdbbc7'><use x='88.667' y='61.836' xlink:href='#g2-75'/></g></svg></span>`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.7644em" viewBox='34.67 54.829 7.28 7.206'><desc>$\mathcal{L}$</desc><g id='math-5dcbf6'><use x='34.869' y='61.836' xlink:href='#g2-76'/></g></svg></span>(c: Cell`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>, d: Cell`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.8550em" viewBox='88.468 54.829 8.143 7.206'><desc>$\mathcal{K}$</desc><g id='math-fdbbc7'><use x='88.667' y='61.836' xlink:href='#g2-75'/></g></svg></span>, e: Cell`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.7644em" viewBox='34.67 54.829 7.28 7.206'><desc>$\mathcal{L}$</desc><g id='math-5dcbf6'><use x='34.869' y='61.836' xlink:href='#g2-76'/></g></svg></span>)
+  <span style="color:purple">modifies</span> c
+{
+  c.data := c.data + d.data + e.data;
+}</code></pre>
+<p class="p noindent para-continued" data-line="282" style="font-size:50px"><span data-line="282"></span>If regions are distinct and are parts of types, then</p>
+<ul class="ul list-star compact" data-line="285" style="font-size:50px">
+<li class="li ul-li list-star-li compact-li" data-line="285"><span data-line="285"></span>regions can be inferred in operations
+</li>
+<li class="li ul-li list-star-li compact-li" data-line="286"><span data-line="286"></span>regions can be modeled as separate variables</li></ul>
+</section>
+<section id="sec-local-regions" class="section section1" data-section-depth="1" data-line="289"><h2 id="heading-sec-local-regions" class="h1" data-heading-depth="1" style="display:block">Local regions</h2>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="291" data-line-first="292" style="display:block"><code data-line="292"><span style="color:blue">method</span> Inc2`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.7644em" viewBox='34.67 54.829 7.28 7.206'><desc>$\mathcal{L}$</desc><g id='math-5dcbf6'><use x='34.869' y='61.836' xlink:href='#g2-76'/></g></svg></span>(c: Cell`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>, e: Cell`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.7644em" viewBox='34.67 54.829 7.28 7.206'><desc>$\mathcal{L}$</desc><g id='math-5dcbf6'><use x='34.869' y='61.836' xlink:href='#g2-76'/></g></svg></span>)
+  <span style="color:purple">modifies</span> c
+{
+  <span style="color:blue">var</span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.8550em" viewBox='88.468 54.829 8.143 7.206'><desc>$\mathcal{K}$</desc><g id='math-fdbbc7'><use x='88.667' y='61.836' xlink:href='#g2-75'/></g></svg></span>: <span style="color:teal">region</span>;
+  <span style="color:blue">var</span> d := <span style="color:blue">new</span> Cell`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.8550em" viewBox='88.468 54.829 8.143 7.206'><desc>$\mathcal{K}$</desc><g id='math-fdbbc7'><use x='88.667' y='61.836' xlink:href='#g2-75'/></g></svg></span>;
+  d.data := <span class="constant" style="color:purple">1</span>;
+  Inc`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.8550em" viewBox='88.468 54.829 8.143 7.206'><desc>$\mathcal{K}$</desc><g id='math-fdbbc7'><use x='88.667' y='61.836' xlink:href='#g2-75'/></g></svg></span>`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.7644em" viewBox='34.67 54.829 7.28 7.206'><desc>$\mathcal{L}$</desc><g id='math-5dcbf6'><use x='34.869' y='61.836' xlink:href='#g2-76'/></g></svg></span>(c, d, e);
+}</code></pre>
+<p class="p noindent para-continued" data-line="302"><span data-line="302"></span>The region names in this method body can probably be inferred.
+</p></section>
+<section id="sec-lexically-scoped-regions" class="section section1" data-section-depth="1" data-line="304"><h2 id="heading-sec-lexically-scoped-regions" class="h1" data-heading-depth="1" style="display:block">Lexically scoped regions</h2>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="306" data-line-first="307" style="display:block"><code data-line="307">{
+  <span style="color:blue">var</span> outer: Cell;
+  {
+    <span style="color:blue">var</span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.8550em" viewBox='88.468 54.829 8.143 7.206'><desc>$\mathcal{K}$</desc><g id='math-fdbbc7'><use x='88.667' y='61.836' xlink:href='#g2-75'/></g></svg></span>: <span style="color:teal">region</span>;
+    <span style="color:blue">var</span> inner := <span style="color:blue">new</span> Cell`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.8550em" viewBox='88.468 54.829 8.143 7.206'><desc>$\mathcal{K}$</desc><g id='math-fdbbc7'><use x='88.667' y='61.836' xlink:href='#g2-75'/></g></svg></span>;
+    <span style="color:darkgreen">// the following assignment is ill-typed,</span>
+    <span style="color:darkgreen">// because the type of `outer` cannot mention </span><span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.8550em" viewBox='88.468 54.829 8.143 7.206'><desc>$\mathcal{K}$</desc><g id='math-fdbbc7'><use x='88.667' y='61.836' xlink:href='#g2-75'/></g></svg></span>
+    outer := inner;
+  }
+}</code></pre>
+<p class="p noindent para-continued" data-line="319"><span data-line="319"></span>The lexical regions are similar to what the programming language Euclid provided
+</p></section>
+<section id="sec-dynamically-scoped-regions" class="section section1" data-section-depth="1" data-line="321"><h2 id="heading-sec-dynamically-scoped-regions" class="h1" data-heading-depth="1" style="display:block">Dynamically scoped regions</h2>
+<ul class="ul list-star compact" data-line="323" style="font-size:50px">
+<li class="li ul-li list-star-li compact-li" data-line="323"><span data-line="323"></span>To place regions into data structures, we need to go beyond lexical regions
+</li>
+<li class="li ul-li list-star-li compact-li" data-line="324"><span data-line="324"></span>The useful property that lexical scoping gives us is that
+
+<ul class="ul list-dash compact" data-line="325" style="font-size:50px">
+<li class="li ul-li list-dash-li compact-li" data-line="325"><span data-line="325"></span>regions are distinct and never duplicated</li></ul></li>
+<li class="li ul-li list-star-li compact-li" data-line="327"><span data-line="327"></span>To get that useful property beyond lexical scoping, we need to track <span data-line="327"></span><em class="em-low1">provenance</em></li></ul>
+</section>
+<section id="sec-provenance" class="section section1" data-section-depth="1" data-line="330"><h2 id="heading-sec-provenance" class="h1" data-heading-depth="1" style="display:block">Provenance</h2>
+<p class="p noindent" data-line="332" style="font-size:50px"><span data-line="332"></span>provenance</p>
+<p class="p indent" data-line="335" style="font-size:50px"><span data-line="335"></span><em class="em-low1">noun</em></p>
+<p class="p indent" data-line="338" style="font-size:50px"><span data-line="338"></span>the place of origin or earliest known history of something</p>
+<ul class="ul list-star compact" data-line="341" style="font-size:50px">
+<li class="li ul-li list-star-li compact-li" data-line="341"><span data-line="341"></span>the beginning of something<span data-line="341"></span>&#39;<span data-line="341"></span>s existence; something<span data-line="341"></span>&#39;<span data-line="341"></span>s origin
+</li>
+<li class="li ul-li list-star-li compact-li" data-line="342"><span data-line="342"></span>a record of ownership of a work of art or an antique, used as a guide to authenticity of quality</li></ul>
+</section>
+<section id="sec-linear-affine-unique-monadic-tracked" class="section section1" data-section-depth="1" data-line="345"><h2 id="heading-sec-linear-affine-unique-monadic-tracked" class="h1" data-heading-depth="1" style="display:block">Linear, affine, unique, monadic, tracked</h2>
+<p class="p noindent" data-line="347" style="font-size:50px"><span data-line="347"></span>There are many names:</p>
+<ul class="ul list-star compact" data-line="350" style="font-size:50px">
+<li class="li ul-li list-star-li compact-li" data-line="350"><span data-line="350"></span><em class="em-low1">Uniqueness types</em><span data-line="350"></span> track what has been
+</li>
+<li class="li ul-li list-star-li compact-li" data-line="351"><span data-line="351"></span><em class="em-low1">Affine types</em><span data-line="351"></span> restrict what is to come
+</li>
+<li class="li ul-li list-star-li compact-li" data-line="352"><span data-line="352"></span><em class="em-low1">Linear types</em><span data-line="352"></span> restrict what is to come and ensures something happens
+</li>
+<li class="li ul-li list-star-li compact-li" data-line="353"><span data-line="353"></span><em class="em-low1">Monadic types</em><span data-line="353"></span> give a way to thread unique in-out parameters</li></ul>
+
+<p class="p noindent" data-line="356" style="font-size:50px"><span data-line="356"></span>I will use the term <span data-line="356"></span><em class="em-low1">tracked types</em></p></section>
+<section id="sec-a-little-language" class="section section1" data-section-depth="1" data-line="359"><h2 id="heading-sec-a-little-language" class="h1" data-heading-depth="1" style="display:block">A little language</h2>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="361" data-line-first="362" style="display:block"><code data-line="362">Method ::= <span style="color:blue">method</span> M(x*) <span style="color:blue">returns</span> (x*) BlockStmt
+BlockStmt ::= { Stmt* }
+Stmt ::=
+  | <span style="color:blue">var</span> x
+  | x := Expr             <span style="color:darkgreen">// simple assignment</span>
+  | x* := M(Expr*)        <span style="color:darkgreen">// method call</span>
+  | <span style="color:blue">var</span> Ctor(x*) := Expr  <span style="color:darkgreen">// datatype destructor</span>
+  | <span style="color:blue">if</span> Expr BlockStmt <span style="color:blue">else</span> BlockStmt
+  | BlockStmt
+Expr ::=
+  | x                     <span style="color:darkgreen">// variable</span>
+  | F(Expr*)              <span style="color:darkgreen">// constants, operators, functions</span>
+  | Ctor(Expr*)           <span style="color:darkgreen">// datatype constructor</span></code></pre>
+<p class="p noindent para-continued" data-line="377"><span data-line="377"></span>A language like this is typical when defining linear types.
+</p></section>
+<section id="sec-tracking-rules" class="section section1" data-section-depth="1" data-line="379"><h2 id="heading-sec-tracking-rules" class="h1" data-heading-depth="1" style="display:block">Tracking rules</h2>
+<p class="p noindent" data-line="381"><span data-line="381"></span>The judgment
+</p>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="383" data-line-first="384" style="display:block"><code data-line="384">U;V <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> S <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.4371em;width:1.6701em" viewBox='34.67 57.872 15.906 4.163'><desc>${}\rightsquigarrow{}$</desc><g id='math-1dbc9a'><use x='37.637' y='61.836' xlink:href='#g1-32'/></g></svg></span> U&#39;;V&#39;</code></pre>
+<p class="p noindent para-continued" data-line="387"><span data-line="387"></span>says that if
+</p>
+<ul class="ul list-star compact" data-line="389" style="font-size:40px">
+<li class="li ul-li list-star-li compact-li" data-line="389"><span data-line="389"></span>unrestrcted variables <span data-line="389"></span><code class="code code1 language-dafnyx lang-dafnyx dafnyx colorized">U</code><span data-line="389"></span> and
+</li>
+<li class="li ul-li list-star-li compact-li" data-line="390"><span data-line="390"></span>tracked variables <span data-line="390"></span><code class="code code1 language-dafnyx lang-dafnyx dafnyx colorized">V</code></li></ul>
+
+<p class="p noindent" data-line="393"><span data-line="393"></span>are available when statement <span data-line="393"></span><code class="code code1 language-dafnyx lang-dafnyx dafnyx colorized">S</code><span data-line="393"></span> is started, then
+</p>
+<ul class="ul list-star compact" data-line="395" style="font-size:40px">
+<li class="li ul-li list-star-li compact-li" data-line="395"><span data-line="395"></span>unrestrcted variables <span data-line="395"></span><code class="code code1 language-dafnyx lang-dafnyx dafnyx colorized">U&#39;</code><span data-line="395"></span> and
+</li>
+<li class="li ul-li list-star-li compact-li" data-line="396"><span data-line="396"></span>tracked variables <span data-line="396"></span><code class="code code1 language-dafnyx lang-dafnyx dafnyx colorized">V&#39;</code></li></ul>
+
+<p class="p noindent" data-line="399"><span data-line="399"></span>are available after statement <span data-line="399"></span><code class="code code1 language-dafnyx lang-dafnyx dafnyx colorized">S</code><span data-line="399"></span>.
+</p>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="401" data-line-first="402" style="display:block"><code data-line="402">U;V <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> E : m</code></pre>
+<p class="p noindent para-continued" data-line="405"><span data-line="405"></span>says that, if <span data-line="405"></span><code class="code code1 language-dafnyx lang-dafnyx dafnyx colorized">U;V</code><span data-line="405"></span> are available, then expression <span data-line="405"></span><code class="code code1 language-dafnyx lang-dafnyx dafnyx colorized">E</code><span data-line="405"></span> evaluates to a value of mode <span data-line="405"></span><code class="code code1 language-dafnyx lang-dafnyx dafnyx colorized">m</code><span data-line="405"></span> (<span data-line="405"></span><code class="code code1 language-dafnyx lang-dafnyx dafnyx colorized">un</code><span data-line="405"></span>/<span data-line="405"></span><code class="code code1 language-dafnyx lang-dafnyx dafnyx colorized">tr</code><span data-line="405"></span>).
+</p></section>
+<section id="sec-variable-introduction" class="section section1" data-section-depth="1" data-line="407"><h2 id="heading-sec-variable-introduction" class="h1" data-heading-depth="1" style="display:block">Variable introduction</h2>
+<p class="p noindent" data-line="409"><span data-line="409"></span>If <span data-line="409"></span><code class="code code1 language-dafnyx lang-dafnyx dafnyx colorized">x</code><span data-line="409"></span> requires manual initialization:
+</p>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="411" data-line-first="412" style="display:block"><code data-line="412">U;V <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> <span style="color:blue">var</span> x <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.4371em;width:1.6701em" viewBox='34.67 57.872 15.906 4.163'><desc>${}\rightsquigarrow{}$</desc><g id='math-1dbc9a'><use x='37.637' y='61.836' xlink:href='#g1-32'/></g></svg></span> U;V</code></pre>
+<p class="p noindent para-continued" data-line="415"><span data-line="415"></span>If <span data-line="415"></span><code class="code code1 language-dafnyx lang-dafnyx dafnyx colorized">x</code><span data-line="415"></span> is auto-initialized:
+</p>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="417" data-line-first="418" style="display:block"><code data-line="418">x : un
+----------------------
+U;V <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> <span style="color:blue">var</span> x <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.4371em;width:1.6701em" viewBox='34.67 57.872 15.906 4.163'><desc>${}\rightsquigarrow{}$</desc><g id='math-1dbc9a'><use x='37.637' y='61.836' xlink:href='#g1-32'/></g></svg></span> U,x;V</code></pre>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="423" data-line-first="424" style="display:block"><code data-line="424">x : tr
+----------------------
+U;V <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> <span style="color:blue">var</span> x <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.4371em;width:1.6701em" viewBox='34.67 57.872 15.906 4.163'><desc>${}\rightsquigarrow{}$</desc><g id='math-1dbc9a'><use x='37.637' y='61.836' xlink:href='#g1-32'/></g></svg></span> U;V,x</code></pre></section>
+<section id="sec-strut" class="section section1" data-section-depth="1" data-line="429"><h2 id="heading-sec-strut" class="h1" data-heading-depth="1" style="display:block">&#8203;</h2>
+<p class="p noindent" data-line="431"><span data-line="431"></span>If type of <span data-line="431"></span><code class="code code1 language-dafnyx lang-dafnyx dafnyx colorized">x</code><span data-line="431"></span> requires manual initialization:
+</p>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="433" data-line-first="434" style="display:block"><code data-line="434">U;V <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> <span style="color:blue">var</span> x <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.4371em;width:1.6701em" viewBox='34.67 57.872 15.906 4.163'><desc>${}\rightsquigarrow{}$</desc><g id='math-1dbc9a'><use x='37.637' y='61.836' xlink:href='#g1-32'/></g></svg></span> U;V</code></pre>
+<p class="p noindent para-continued" data-line="437"><span data-line="437"></span>If <span data-line="437"></span><code class="code code1 language-dafnyx lang-dafnyx dafnyx colorized">x</code><span data-line="437"></span> is auto-initialized:
+</p>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="439" data-line-first="440" style="display:block"><code data-line="440">U;V <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> <span style="color:blue">var</span> x <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.4371em;width:1.6701em" viewBox='34.67 57.872 15.906 4.163'><desc>${}\rightsquigarrow{}$</desc><g id='math-1dbc9a'><use x='37.637' y='61.836' xlink:href='#g1-32'/></g></svg></span> U;V +x</code></pre></section>
+<section id="sec-simple-assignment" class="section section1" data-section-depth="1" data-line="443"><h2 id="heading-sec-simple-assignment" class="h1" data-heading-depth="1" style="display:block">Simple assignment</h2>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="445" data-line-first="446" style="display:block"><code data-line="446">x : m&#39;
+U;V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1918em;height:0.5138em;width:0.5122em" viewBox='88.468 58.636 4.878 4.893'><desc>${}_0$</desc><g id='math-e412bc'><use x='88.667' y='63.33' xlink:href='#g5-48'/></g></svg></span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> E : m
+m&#39; <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1706em;height:0.8493em;width:0.8565em" viewBox='34.67 55.3 8.157 8.089'><desc>$\leq$</desc><g id='math-de44c5'><use x='34.869' y='61.836' xlink:href='#g2-20'/></g></svg></span> m
+-------------------------------
+U;V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1918em;height:0.5138em;width:0.5122em" viewBox='88.468 58.636 4.878 4.893'><desc>${}_0$</desc><g id='math-e412bc'><use x='88.667' y='63.33' xlink:href='#g5-48'/></g></svg></span>,V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1918em;height:0.5138em;width:0.5122em" viewBox='88.468 58.636 4.878 4.893'><desc>${}_1$</desc><g id='math-89ce66'><use x='88.667' y='63.33' xlink:href='#g5-49'/></g></svg></span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> x := E <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.4371em;width:1.6701em" viewBox='34.67 57.872 15.906 4.163'><desc>${}\rightsquigarrow{}$</desc><g id='math-1dbc9a'><use x='37.637' y='61.836' xlink:href='#g1-32'/></g></svg></span> U;V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1918em;height:0.5138em;width:0.5122em" viewBox='88.468 58.636 4.878 4.893'><desc>${}_1$</desc><g id='math-89ce66'><use x='88.667' y='63.33' xlink:href='#g5-49'/></g></svg></span> +x</code></pre></section>
+<section id="sec-if" class="section section1" data-section-depth="1" data-line="453"><h2 id="heading-sec-if" class="h1" data-heading-depth="1" style="display:block">If</h2>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="455" data-line-first="456" style="display:block"><code data-line="456">U;V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1918em;height:0.5138em;width:0.5122em" viewBox='88.468 58.636 4.878 4.893'><desc>${}_0$</desc><g id='math-e412bc'><use x='88.667' y='63.33' xlink:href='#g5-48'/></g></svg></span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> E : _
+U;V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1918em;height:0.5138em;width:0.5122em" viewBox='88.468 58.636 4.878 4.893'><desc>${}_1$</desc><g id='math-89ce66'><use x='88.667' y='63.33' xlink:href='#g5-49'/></g></svg></span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> S <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.4371em;width:1.6701em" viewBox='34.67 57.872 15.906 4.163'><desc>${}\rightsquigarrow{}$</desc><g id='math-1dbc9a'><use x='37.637' y='61.836' xlink:href='#g1-32'/></g></svg></span> U<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1910em;height:0.5422em;width:0.6489em" viewBox='34.67 58.365 6.18 5.164'><desc>${}_S$</desc><g id='math-08dd66'><use x='34.869' y='63.33' xlink:href='#g4-83'/></g></svg></span>;V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1910em;height:0.5422em;width:0.6489em" viewBox='34.67 58.365 6.18 5.164'><desc>${}_S$</desc><g id='math-08dd66'><use x='34.869' y='63.33' xlink:href='#g4-83'/></g></svg></span>
+U;V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1918em;height:0.5138em;width:0.5122em" viewBox='88.468 58.636 4.878 4.893'><desc>${}_1$</desc><g id='math-89ce66'><use x='88.667' y='63.33' xlink:href='#g5-49'/></g></svg></span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> T <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.4371em;width:1.6701em" viewBox='34.67 57.872 15.906 4.163'><desc>${}\rightsquigarrow{}$</desc><g id='math-1dbc9a'><use x='37.637' y='61.836' xlink:href='#g1-32'/></g></svg></span> U<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1910em;height:0.5422em;width:0.7019em" viewBox='34.67 58.365 6.685 5.164'><desc>${}_T$</desc><g id='math-a64190'><use x='34.869' y='63.33' xlink:href='#g4-84'/></g></svg></span>;V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1910em;height:0.5422em;width:0.7019em" viewBox='34.67 58.365 6.685 5.164'><desc>${}_T$</desc><g id='math-a64190'><use x='34.869' y='63.33' xlink:href='#g4-84'/></g></svg></span>
+U&#39; = U<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1910em;height:0.5422em;width:0.6489em" viewBox='34.67 58.365 6.18 5.164'><desc>${}_S$</desc><g id='math-08dd66'><use x='34.869' y='63.33' xlink:href='#g4-83'/></g></svg></span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.6230em;width:0.7402em" viewBox='88.468 56.102 7.05 5.933'><desc>$\cap$</desc><g id='math-2198db'><use x='88.667' y='61.836' xlink:href='#g2-92'/></g></svg></span> U<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1910em;height:0.5422em;width:0.7019em" viewBox='34.67 58.365 6.685 5.164'><desc>${}_T$</desc><g id='math-a64190'><use x='34.869' y='63.33' xlink:href='#g4-84'/></g></svg></span>
+V&#39; = V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1910em;height:0.5422em;width:0.6489em" viewBox='34.67 58.365 6.18 5.164'><desc>${}_S$</desc><g id='math-08dd66'><use x='34.869' y='63.33' xlink:href='#g4-83'/></g></svg></span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.6230em;width:0.7402em" viewBox='88.468 56.102 7.05 5.933'><desc>$\cap$</desc><g id='math-2198db'><use x='88.667' y='61.836' xlink:href='#g2-92'/></g></svg></span> V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1910em;height:0.5422em;width:0.7019em" viewBox='34.67 58.365 6.685 5.164'><desc>${}_T$</desc><g id='math-a64190'><use x='34.869' y='63.33' xlink:href='#g4-84'/></g></svg></span>
+---------------------------------
+U;V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1918em;height:0.5138em;width:0.5122em" viewBox='88.468 58.636 4.878 4.893'><desc>${}_0$</desc><g id='math-e412bc'><use x='88.667' y='63.33' xlink:href='#g5-48'/></g></svg></span>,V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1918em;height:0.5138em;width:0.5122em" viewBox='88.468 58.636 4.878 4.893'><desc>${}_1$</desc><g id='math-89ce66'><use x='88.667' y='63.33' xlink:href='#g5-49'/></g></svg></span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> <span style="color:blue">if</span> E S <span style="color:blue">else</span> T <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.4371em;width:1.6701em" viewBox='34.67 57.872 15.906 4.163'><desc>${}\rightsquigarrow{}$</desc><g id='math-1dbc9a'><use x='37.637' y='61.836' xlink:href='#g1-32'/></g></svg></span> U&#39;;V&#39;</code></pre></section>
+<section id="sec-block-statement" class="section section1" data-section-depth="1" data-line="465"><h2 id="heading-sec-block-statement" class="h1" data-heading-depth="1" style="display:block">Block statement</h2>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="467" data-line-first="468" style="display:block"><code data-line="468"><span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1853em;height:0.9252em;width:0.9723em" viewBox='88.468 54.718 9.26 8.811'><desc>$\forall_{i}$</desc><g id='math-b342e5'><use x='88.667' y='61.836' xlink:href='#g2-56'/><use x='94.202' y='63.33' xlink:href='#g4-105'/></g></svg></span>  U<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span>;V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> { S<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span> } <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.4371em;width:1.6701em" viewBox='34.67 57.872 15.906 4.163'><desc>${}\rightsquigarrow{}$</desc><g id='math-1dbc9a'><use x='37.637' y='61.836' xlink:href='#g1-32'/></g></svg></span> U<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.2829em;height:0.6135em;width:1.4504em" viewBox='34.67 58.516 13.813 5.843'><desc>${}_{i+1}$</desc><g id='math-d71555'><use x='34.869' y='63.33' xlink:href='#g4-105'/><use x='37.688' y='63.33' xlink:href='#g5-43'/><use x='43.804' y='63.33' xlink:href='#g5-49'/></g></svg></span>;V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.2829em;height:0.6135em;width:1.4504em" viewBox='34.67 58.516 13.813 5.843'><desc>${}_{i+1}$</desc><g id='math-d71555'><use x='34.869' y='63.33' xlink:href='#g4-105'/><use x='37.688' y='63.33' xlink:href='#g5-43'/><use x='43.804' y='63.33' xlink:href='#g5-49'/></g></svg></span>
+------------------------------------
+U<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1918em;height:0.5138em;width:0.5122em" viewBox='88.468 58.636 4.878 4.893'><desc>${}_0$</desc><g id='math-e412bc'><use x='88.667' y='63.33' xlink:href='#g5-48'/></g></svg></span>;V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1918em;height:0.5138em;width:0.5122em" viewBox='88.468 58.636 4.878 4.893'><desc>${}_0$</desc><g id='math-e412bc'><use x='88.667' y='63.33' xlink:href='#g5-48'/></g></svg></span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> { S<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1918em;height:0.5138em;width:0.5122em" viewBox='88.468 58.636 4.878 4.893'><desc>${}_0$</desc><g id='math-e412bc'><use x='88.667' y='63.33' xlink:href='#g5-48'/></g></svg></span> S<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1918em;height:0.5138em;width:0.5122em" viewBox='88.468 58.636 4.878 4.893'><desc>${}_1$</desc><g id='math-89ce66'><use x='88.667' y='63.33' xlink:href='#g5-49'/></g></svg></span> ... S<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.2834em;height:0.6009em;width:1.6830em" viewBox='34.67 58.636 16.029 5.723'><desc>${}_{n-1}$</desc><g id='math-49162e'><use x='34.869' y='63.33' xlink:href='#g4-110'/><use x='39.794' y='63.33' xlink:href='#g3-0'/><use x='46.021' y='63.33' xlink:href='#g5-49'/></g></svg></span> } <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.4371em;width:1.6701em" viewBox='34.67 57.872 15.906 4.163'><desc>${}\rightsquigarrow{}$</desc><g id='math-1dbc9a'><use x='37.637' y='61.836' xlink:href='#g1-32'/></g></svg></span> U<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1987em;height:0.3571em;width:0.6123em" viewBox='88.468 60.128 5.831 3.401'><desc>${}_n$</desc><g id='math-96b9f4'><use x='88.667' y='63.33' xlink:href='#g4-110'/></g></svg></span>;V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1987em;height:0.3571em;width:0.6123em" viewBox='88.468 60.128 5.831 3.401'><desc>${}_n$</desc><g id='math-96b9f4'><use x='88.667' y='63.33' xlink:href='#g4-110'/></g></svg></span></code></pre></section>
+<section id="sec-method-call" class="section section1" data-section-depth="1" data-line="473"><h2 id="heading-sec-method-call" class="h1" data-heading-depth="1" style="display:block">Method call</h2>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="475" data-line-first="476" style="display:block"><code data-line="476">M : (m<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span>) <span style="color:blue">returns</span> (m<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.3403em;height:0.6687em;width:0.4836em" viewBox='88.468 58.516 4.606 6.369'><desc>${}_j$</desc><g id='math-ac4cb2'><use x='88.667' y='63.33' xlink:href='#g4-106'/></g></svg></span>)
+U;V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> E<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span> : m<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span>
+x<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.3403em;height:0.6687em;width:0.4836em" viewBox='88.468 58.516 4.606 6.369'><desc>${}_j$</desc><g id='math-ac4cb2'><use x='88.667' y='63.33' xlink:href='#g4-106'/></g></svg></span> : m&#39;<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.3403em;height:0.6687em;width:0.4836em" viewBox='88.468 58.516 4.606 6.369'><desc>${}_j$</desc><g id='math-ac4cb2'><use x='88.667' y='63.33' xlink:href='#g4-106'/></g></svg></span>
+m&#39;<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.3403em;height:0.6687em;width:0.4836em" viewBox='88.468 58.516 4.606 6.369'><desc>${}_j$</desc><g id='math-ac4cb2'><use x='88.667' y='63.33' xlink:href='#g4-106'/></g></svg></span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1706em;height:0.8493em;width:0.8565em" viewBox='34.67 55.3 8.157 8.089'><desc>$\leq$</desc><g id='math-de44c5'><use x='34.869' y='61.836' xlink:href='#g2-20'/></g></svg></span> m<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.3403em;height:0.6687em;width:0.4836em" viewBox='88.468 58.516 4.606 6.369'><desc>${}_j$</desc><g id='math-ac4cb2'><use x='88.667' y='63.33' xlink:href='#g4-106'/></g></svg></span>
+------------------------------------
+U;V,V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> x<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.3403em;height:0.6687em;width:0.4836em" viewBox='88.468 58.516 4.606 6.369'><desc>${}_j$</desc><g id='math-ac4cb2'><use x='88.667' y='63.33' xlink:href='#g4-106'/></g></svg></span> := M(E<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span>) <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.4371em;width:1.6701em" viewBox='34.67 57.872 15.906 4.163'><desc>${}\rightsquigarrow{}$</desc><g id='math-1dbc9a'><use x='37.637' y='61.836' xlink:href='#g1-32'/></g></svg></span> U;V +x<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span></code></pre></section>
+<section id="sec-datatype-destruction" class="section section1" data-section-depth="1" data-line="484"><h2 id="heading-sec-datatype-destruction" class="h1" data-heading-depth="1" style="display:block">Datatype destruction</h2>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="486" data-line-first="487" style="display:block"><code data-line="487"><span style="color:blue">datatype</span> m, Ctor : m<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span>
+U;V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1918em;height:0.5138em;width:0.5122em" viewBox='88.468 58.636 4.878 4.893'><desc>${}_0$</desc><g id='math-e412bc'><use x='88.667' y='63.33' xlink:href='#g5-48'/></g></svg></span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> E : m
+x<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span> : m&#39;<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span>
+m&#39;<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1706em;height:0.8493em;width:0.8565em" viewBox='34.67 55.3 8.157 8.089'><desc>$\leq$</desc><g id='math-de44c5'><use x='34.869' y='61.836' xlink:href='#g2-20'/></g></svg></span> m<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span>
+-------------------------------------------
+U;V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1918em;height:0.5138em;width:0.5122em" viewBox='88.468 58.636 4.878 4.893'><desc>${}_0$</desc><g id='math-e412bc'><use x='88.667' y='63.33' xlink:href='#g5-48'/></g></svg></span>,V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1918em;height:0.5138em;width:0.5122em" viewBox='88.468 58.636 4.878 4.893'><desc>${}_1$</desc><g id='math-89ce66'><use x='88.667' y='63.33' xlink:href='#g5-49'/></g></svg></span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> <span style="color:blue">var</span> Ctor(x<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span>) := E <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.4371em;width:1.6701em" viewBox='34.67 57.872 15.906 4.163'><desc>${}\rightsquigarrow{}$</desc><g id='math-1dbc9a'><use x='37.637' y='61.836' xlink:href='#g1-32'/></g></svg></span> U;V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1918em;height:0.5138em;width:0.5122em" viewBox='88.468 58.636 4.878 4.893'><desc>${}_1$</desc><g id='math-89ce66'><use x='88.667' y='63.33' xlink:href='#g5-49'/></g></svg></span> +x<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span></code></pre>
+<p class="p noindent para-continued" data-line="495"><span data-line="495"></span>Note that dereliction is built into the rules, but that<span data-line="495"></span>&#39;<span data-line="495"></span>s okay,
+because of the <span data-line="496"></span><code class="code code1 language-dafnyx lang-dafnyx dafnyx colorized">... <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> E : m</code><span data-line="496"></span> requirement above
+and the <span data-line="497"></span><code class="code code1 language-dafnyx lang-dafnyx dafnyx colorized">x : m&#39;</code><span data-line="497"></span> in the rule for simple assignment
+</p></section>
+<section id="sec-rules-for-expressions" class="section section1" data-section-depth="1" data-line="499"><h2 id="heading-sec-rules-for-expressions" class="h1" data-heading-depth="1" style="display:block">Rules for expressions</h2>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="501" data-line-first="502" style="display:block"><code data-line="502">x : m
+x <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0647em;height:0.6467em;width:0.7402em" viewBox='34.67 56.266 7.05 6.159'><desc>$\in$</desc><g id='math-986c22'><use x='34.869' y='61.836' xlink:href='#g2-50'/></g></svg></span> U <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.6230em;width:0.7402em" viewBox='34.67 56.102 7.05 5.933'><desc>$\cup$</desc><g id='math-1a4d3a'><use x='34.869' y='61.836' xlink:href='#g2-91'/></g></svg></span> V
+------------
+U;V <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> x : m</code></pre>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="508" data-line-first="509" style="display:block"><code data-line="509">F : m<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.4257em;width:1.0890em" viewBox='88.468 57.981 10.371 4.054'><desc>$\to$</desc><g id='math-b63573'><use x='88.667' y='61.836' xlink:href='#g2-33'/></g></svg></span> m
+U;V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> E<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span> : m<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span>
+----------------
+U;V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> F(E<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span>) : m</code></pre>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="515" data-line-first="516" style="display:block"><code data-line="516"><span style="color:blue">datatype</span> m, Ctor : m<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span>
+U;V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> E<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span> : m<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span>
+---------------------
+U;V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> Ctor(E<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1915em;height:0.5264em;width:0.3911em" viewBox='34.67 58.516 3.725 5.013'><desc>${}_i$</desc><g id='math-d9a701'><use x='34.869' y='63.33' xlink:href='#g4-105'/></g></svg></span>) : m</code></pre></section>
+<section id="sec-adding-classes-to-the-little-language" class="section section1" data-section-depth="1" data-line="522"><h2 id="heading-sec-adding-classes-to-the-little-language" class="h1" data-heading-depth="1" style="display:block">Adding classes to the little language</h2>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="524" data-line-first="525" style="display:block"><code data-line="525">Stmt ::= ...
+  | x := <span style="color:blue">new</span> Type`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>      <span style="color:darkgreen">// object allocation</span>
+  | Expr`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>.f := Expr     <span style="color:darkgreen">// object field update</span>
+Expr ::= ...
+  | Expr`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>.f             <span style="color:darkgreen">// object field selection</span></code></pre></section>
+<section id="sec-allocation" class="section section1" data-section-depth="1" data-line="532"><h2 id="heading-sec-allocation" class="h1" data-heading-depth="1" style="display:block">Allocation</h2>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="534" data-line-first="535" style="display:block"><code data-line="535"><span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0647em;height:0.6467em;width:0.7402em" viewBox='34.67 56.266 7.05 6.159'><desc>$\in$</desc><g id='math-986c22'><use x='34.869' y='61.836' xlink:href='#g2-50'/></g></svg></span> V
+---------------------------------
+U;V <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> x := <span style="color:blue">new</span> Type`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.4371em;width:1.6701em" viewBox='34.67 57.872 15.906 4.163'><desc>${}\rightsquigarrow{}$</desc><g id='math-1dbc9a'><use x='37.637' y='61.836' xlink:href='#g1-32'/></g></svg></span> U;V +x</code></pre></section>
+<section id="sec-object-field-readwrite" class="section section1" data-section-depth="1" data-line="540"><h2 id="heading-sec-object-field-readwrite" class="h1" data-heading-depth="1" style="display:block">Object field read/write</h2>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="542" data-line-first="543" style="display:block"><code data-line="543"><span style="color:blue">class</span> m, f : m&#39;
+U;<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>,V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1918em;height:0.5138em;width:0.5122em" viewBox='88.468 58.636 4.878 4.893'><desc>${}_0$</desc><g id='math-e412bc'><use x='88.667' y='63.33' xlink:href='#g5-48'/></g></svg></span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> E<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1918em;height:0.5138em;width:0.5122em" viewBox='88.468 58.636 4.878 4.893'><desc>${}_0$</desc><g id='math-e412bc'><use x='88.667' y='63.33' xlink:href='#g5-48'/></g></svg></span> : m
+U;<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>,V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1918em;height:0.5138em;width:0.5122em" viewBox='88.468 58.636 4.878 4.893'><desc>${}_1$</desc><g id='math-89ce66'><use x='88.667' y='63.33' xlink:href='#g5-49'/></g></svg></span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> E<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1918em;height:0.5138em;width:0.5122em" viewBox='88.468 58.636 4.878 4.893'><desc>${}_1$</desc><g id='math-89ce66'><use x='88.667' y='63.33' xlink:href='#g5-49'/></g></svg></span> : m&#39;
+--------------------------------------
+U;<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>,V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1918em;height:0.5138em;width:0.5122em" viewBox='88.468 58.636 4.878 4.893'><desc>${}_0$</desc><g id='math-e412bc'><use x='88.667' y='63.33' xlink:href='#g5-48'/></g></svg></span>,V<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1918em;height:0.5138em;width:0.5122em" viewBox='88.468 58.636 4.878 4.893'><desc>${}_1$</desc><g id='math-89ce66'><use x='88.667' y='63.33' xlink:href='#g5-49'/></g></svg></span>,V <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> E<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1918em;height:0.5138em;width:0.5122em" viewBox='88.468 58.636 4.878 4.893'><desc>${}_0$</desc><g id='math-e412bc'><use x='88.667' y='63.33' xlink:href='#g5-48'/></g></svg></span>`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>.f := E<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1918em;height:0.5138em;width:0.5122em" viewBox='88.468 58.636 4.878 4.893'><desc>${}_1$</desc><g id='math-89ce66'><use x='88.667' y='63.33' xlink:href='#g5-49'/></g></svg></span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.4371em;width:1.6701em" viewBox='34.67 57.872 15.906 4.163'><desc>${}\rightsquigarrow{}$</desc><g id='math-1dbc9a'><use x='37.637' y='61.836' xlink:href='#g1-32'/></g></svg></span> U;<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>,V</code></pre>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="550" data-line-first="551" style="display:block"><code data-line="551"><span style="color:blue">class</span> m, f : m&#39;
+U;V <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> E : m
+<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0647em;height:0.6467em;width:0.7402em" viewBox='34.67 56.266 7.05 6.159'><desc>$\in$</desc><g id='math-986c22'><use x='34.869' y='61.836' xlink:href='#g2-50'/></g></svg></span> V
+-----------------
+U;V <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7683em;width:0.6822em" viewBox='88.468 54.718 6.497 7.317'><desc>$\vdash$</desc><g id='math-7f5788'><use x='88.667' y='61.836' xlink:href='#g2-96'/></g></svg></span> E`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>.f : m&#39;</code></pre></section>
+<section id="sec-are-we-done" class="section section1" data-section-depth="1" data-line="558"><h2 id="heading-sec-are-we-done" class="h1" data-heading-depth="1" style="display:block">Are we done?</h2>
+<p class="p noindent" data-line="560"><span data-line="560"></span>(At least) three things are missing/wrong:
+</p>
+<ul class="ul list-star compact" data-line="562" style="font-size:50px">
+<li class="li ul-li list-star-li compact-li" data-line="562"><span data-line="562"></span>The strictness of tracked types is unnatural for objects
+</li>
+<li class="li ul-li list-star-li compact-li" data-line="563"><span data-line="563"></span>Reading from an object consumes the object
+</li>
+<li class="li ul-li list-star-li compact-li" data-line="564"><span data-line="564"></span>We need to be able to use tracked values in a function without consuming them</li></ul>
+</section>
+<section id="sec-tracked-objects" class="section section1" data-section-depth="1" data-line="567"><h2 id="heading-sec-tracked-objects" class="h1" data-heading-depth="1" style="display:block">Tracked objects</h2>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="569" data-line-first="570" style="display:block"><code data-line="570"><span style="color:blue">tracked</span> <span style="color:blue">class</span> QueryEngine {
+  <span style="color:blue">var</span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>: <span style="color:teal">region</span>
+  <span style="color:blue">var</span> cache: Cache`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>
+  ...
+
+  <span style="color:blue">method</span> Operate()
+  {
+    <span style="color:blue">var</span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>, cache := <span style="color:blue">this</span>; <span style="color:darkgreen">// &quot;unpack this&quot;</span>
+    cache`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>.Lookup();
+    ...
+    <span style="color:blue">this</span> := <span style="color:blue">new</span> QueryEngine{ <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>, cache }; <span style="color:darkgreen">// &quot;pack this&quot;</span>
+  }
+}</code></pre>
+<div class="fragment" data-line="585">
+<p class="p noindent" data-line="586"><span data-line="586"></span>This seems unnatural for objects.
+</p>
+<p class="p indent" data-line="588"><span data-line="588"></span>But maybe any <span data-line="588"></span>&#8220;tracked object&#8221;<span data-line="588"></span> should really be a tracked datatype value?</p></div></section>
+<section id="sec-reading-from-a-region" class="section section1" data-section-depth="1" data-line="591"><h2 id="heading-sec-reading-from-a-region" class="h1" data-heading-depth="1" style="display:block">Reading from a region</h2>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="593" data-line-first="594" style="display:block"><code data-line="594"><span style="color:blue">tracked</span> <span style="color:blue">datatype</span> Counter =
+  | Counter(<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>: <span style="color:teal">region</span>, cell: Cell`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>)
+{
+  <span style="color:blue">method</span> Inc() <span style="color:blue">returns</span> (this&#39;: Counter)
+  {
+    <span style="color:blue">var</span> Counter(<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>, cell) := <span style="color:blue">this</span>;
+    <span style="color:blue">var</span> x := cell`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>.data + <span class="constant" style="color:purple">1</span>; <span style="color:darkgreen">// RHS consumes cell</span>
+    cell`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>.data := x;         <span style="color:darkgreen">// LHS consumes cell</span>
+    this&#39; := Counter(<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>, cell);
+  }
+}</code></pre></section>
+<section id="sec-using-tracked-values-in-a-function" class="section section1" data-section-depth="1" data-line="607"><h2 id="heading-sec-using-tracked-values-in-a-function" class="h1" data-heading-depth="1" style="display:block">Using tracked values in a function</h2>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="609" data-line-first="610" style="display:block"><code data-line="610"><span style="color:blue">tracked</span> <span style="color:blue">datatype</span> Machine =
+  | Machine(<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>: <span style="color:teal">region</span>, motor: Motor`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>, screen: Monitor`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>)
+{
+  <span style="color:blue">predicate</span> Valid() {
+    <span style="color:blue">var</span> Machine(<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>, motor, screen) := <span style="color:blue">this</span>;
+    screen`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>.vsize == screen`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>.hsize
+  }
+}</code></pre>
+<p class="p noindent para-continued" data-line="620"><span data-line="620"></span>This is a complication in Chalice / Viper
+</p></section>
+<section id="sec-sharedborrowed-values" class="section section1" data-section-depth="1" data-line="622"><h2 id="heading-sec-sharedborrowed-values" class="h1" data-heading-depth="1" style="display:block">Shared/borrowed values</h2>
+<ul class="ul list-star compact" data-line="624" style="font-size:50px">
+<li class="li ul-li list-star-li compact-li" data-line="624"><span data-line="624"></span>Change <span data-line="624"></span><code class="code code1 language-dafnyx lang-dafnyx dafnyx colorized">U;V</code><span data-line="624"></span> environment to <span data-line="624"></span><code class="code code1 language-dafnyx lang-dafnyx dafnyx colorized">U;B;V</code><span data-line="624"></span> where <span data-line="624"></span><code class="code code1 language-dafnyx lang-dafnyx dafnyx colorized">B</code><span data-line="624"></span> has the shared values</li></ul>
+
+<div class="fragment" data-line="627">
+<ul class="ul list-star compact" data-line="628" style="font-size:50px">
+<li class="li ul-li list-star-li compact-li" data-line="628"><span data-line="628"></span>Can parameters be declared as <span data-line="628"></span>&#8220;shared&#8221;<span data-line="628"></span>?
+</li>
+<li class="li ul-li list-star-li compact-li" data-line="629"><span data-line="629"></span>Can locals be declared as <span data-line="629"></span>&#8220;shared&#8221;<span data-line="629"></span>?
+</li>
+<li class="li ul-li list-star-li compact-li" data-line="630"><span data-line="630"></span>What is the <span data-line="630"></span><code class="code code1 language-dafnyx lang-dafnyx dafnyx colorized"><span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.1706em;height:0.8493em;width:0.8565em" viewBox='34.67 55.3 8.157 8.089'><desc>$\leq$</desc><g id='math-de44c5'><use x='34.869' y='61.836' xlink:href='#g2-20'/></g></svg></span></code><span data-line="630"></span> ordering on <span data-line="630"></span><code class="code code1 language-dafnyx lang-dafnyx dafnyx colorized">un</code><span data-line="630"></span>,<span data-line="630"></span><code class="code code1 language-dafnyx lang-dafnyx dafnyx colorized">sh</code><span data-line="630"></span>,<span data-line="630"></span><code class="code code1 language-dafnyx lang-dafnyx dafnyx colorized">tr</code><span data-line="630"></span>?
+</li>
+<li class="li ul-li list-star-li compact-li" data-line="631"><span data-line="631"></span>Does <span data-line="631"></span><code class="code code1 language-dafnyx lang-dafnyx dafnyx colorized">sh</code><span data-line="631"></span> need to be contained, like regions do? (Lifetimes) Can this mechanism build on the <span data-line="631"></span><code class="code code2 language-dafnyx lang-dafnyx dafnyx colorized">Type`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span></code><span data-line="631"></span> mechanism?</li></ul></div></section>
+<section id="sec-other-questions" class="section section1" data-section-depth="1" data-line="635"><h2 id="heading-sec-other-questions" class="h1" data-heading-depth="1" style="display:block">Other questions</h2>
+<ul class="ul list-star loose" data-line="637" style="font-size:40px">
+<li class="li ul-li list-star-li loose-li" data-line="637">
+<p data-line="637"><span data-line="637"></span>Is a method always implicitly allowed to extend a given region?
+</p>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="638" data-line-first="639" style="display:block;font-size:30px"><code data-line="639">  <span style="color:blue">method</span> UndeclaredAllocations`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>() {
+    <span style="color:blue">var</span> cell := <span style="color:blue">new</span> Cell`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>;
+    cell.data := <span class="constant" style="color:purple">12</span>;
+  }</code></pre></li>
+<li class="li ul-li list-star-li loose-li" data-line="645">
+<p data-line="645"><span data-line="645"></span>Can you do local storage with this region mechanism? (Then, is there a distinction between regions that can or cannot be extended?)
+</p>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="646" data-line-first="647" style="display:block;font-size:30px"><code data-line="647">  <span style="color:blue">method</span> LocalStorage() {
+    <span style="color:blue">var</span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:3.2261em" viewBox='88.468 54.829 30.725 7.206'><desc>$\mathcal{L}\normalfont{\textsc{ocal}}$</desc><g id='math-60e92c'><use x='88.667' y='61.836' xlink:href='#g2-76'/><use x='95.539' y='61.836' xlink:href='#g0-111'/><use x='101.871' y='61.836' xlink:href='#g0-99'/><use x='107.76' y='61.836' xlink:href='#g0-97'/><use x='113.87' y='61.836' xlink:href='#g0-108'/></g></svg></span>: <span style="color:teal">region</span>;
+    <span style="color:blue">var</span> cell := <span style="color:blue">new</span> Cell`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:3.2261em" viewBox='88.468 54.829 30.725 7.206'><desc>$\mathcal{L}\normalfont{\textsc{ocal}}$</desc><g id='math-60e92c'><use x='88.667' y='61.836' xlink:href='#g2-76'/><use x='95.539' y='61.836' xlink:href='#g0-111'/><use x='101.871' y='61.836' xlink:href='#g0-99'/><use x='107.76' y='61.836' xlink:href='#g0-97'/><use x='113.87' y='61.836' xlink:href='#g0-108'/></g></svg></span>;
+    cell`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:3.2261em" viewBox='88.468 54.829 30.725 7.206'><desc>$\mathcal{L}\normalfont{\textsc{ocal}}$</desc><g id='math-60e92c'><use x='88.667' y='61.836' xlink:href='#g2-76'/><use x='95.539' y='61.836' xlink:href='#g0-111'/><use x='101.871' y='61.836' xlink:href='#g0-99'/><use x='107.76' y='61.836' xlink:href='#g0-97'/><use x='113.87' y='61.836' xlink:href='#g0-108'/></g></svg></span>.DoSomething();
+    AnotherMethod`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:3.2261em" viewBox='88.468 54.829 30.725 7.206'><desc>$\mathcal{L}\normalfont{\textsc{ocal}}$</desc><g id='math-60e92c'><use x='88.667' y='61.836' xlink:href='#g2-76'/><use x='95.539' y='61.836' xlink:href='#g0-111'/><use x='101.871' y='61.836' xlink:href='#g0-99'/><use x='107.76' y='61.836' xlink:href='#g0-97'/><use x='113.87' y='61.836' xlink:href='#g0-108'/></g></svg></span>();
+  }</code></pre></li>
+<li class="li ul-li list-star-li loose-li" data-line="655">
+<p data-line="655"><span data-line="655"></span>Can these regions be used as a programming device? (Then, do all regions need to be present at run time?)
+</p>
+<pre class="para-block pre-fenced pre-fenced3 language-dafnyx lang-dafnyx dafnyx colorized" data-line="656" data-line-first="657" style="display:block;font-size:30px"><code data-line="657">  <span style="color:blue">method</span> EfficientDeallocation() {
+    <span style="color:blue">var</span> <span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>: <span style="color:teal">region</span>;
+    ...
+    SomeMethod`<span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span>(...);
+    ...
+    <span style="color:darkgreen">// </span><span class="code-escaped"><svg  class="math-inline math-render-svg math" style="vertical-align:-0.0210em;height:0.7566em;width:0.9364em" viewBox='34.67 54.829 8.918 7.206'><desc>$\mathcal{H}$</desc><g id='math-6799f1'><use x='34.869' y='61.836' xlink:href='#g2-72'/></g></svg></span> <span style="color:blue">is</span> automatically freed here
+  }</code></pre></li></ul>
+</section>
+<section id="sec-comparisons" class="section section1" data-section-depth="1" data-line="667"><h2 id="heading-sec-comparisons" class="h1" data-heading-depth="1" style="display:block">Comparisons</h2>
+<ul class="ul list-star compact" data-line="669" style="font-size:50px">
+<li class="li ul-li list-star-li compact-li" data-line="669"><span data-line="669"></span>In separation logic, regions are not explicit in the program text
+</li>
+<li class="li ul-li list-star-li compact-li" data-line="670"><span data-line="670"></span>In Linear Dafny, regions are handled by the verifier, not the type system</li></ul></section></div></div><span data-line=""></span></div>
+<svg id='math-svg-paths' style='display:none' version='1.1' viewBox='0 0 0 0' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
+<defs>
+<path id='g2-72' d='M3.298-3.337C3.427-3.806 3.557-4.314 3.656-4.792C3.776-5.46 3.846-6.127 3.846-6.247C3.846-6.804 3.298-6.804 3.178-6.804C2.421-6.804 1.743-6.526 1.275-6.207C.468-5.659 .209-4.991 .209-4.941C.209-4.872 .279-4.872 .309-4.872C.389-4.872 .857-4.991 1.066-5.37C1.335-5.878 1.624-6.257 2.521-6.257C2.929-6.257 2.999-5.978 2.999-5.818C2.999-5.808 2.969-5.34 2.849-4.653C2.8-4.374 2.77-4.194 2.56-3.337H2.202C1.923-3.328 1.465-3.009 1.465-2.859C1.465-2.8 1.474-2.79 1.694-2.79H2.411C2.202-2.092 1.923-1.136 1.465 .08C1.375 .309 1.375 .329 1.375 .339C1.375 .408 1.455 .408 1.474 .408C1.614 .408 1.923 .279 2.122 .08C2.172 .02 2.192 0 2.232-.1C2.58-.976 2.879-1.873 3.138-2.79H5.38C5.489-2.79 5.679-2.79 5.838-2.889C5.729-2.471 5.32-.847 5.32-.06C5.32 .229 5.489 .488 5.918 .488C7.243 .488 7.98-.339 7.98-.658C7.98-.717 7.93-.737 7.88-.737C7.801-.737 7.273-.598 7.123-.209C7.083-.13 7.073-.12 6.884-.09C6.775-.07 6.585-.06 6.575-.06C6.396-.06 6.167-.179 6.167-.488C6.167-.608 6.237-1.156 6.267-1.375C6.436-2.481 6.924-4.354 7.781-6.625C7.811-6.695 7.811-6.715 7.811-6.735C7.811-6.804 7.751-6.804 7.711-6.804C7.562-6.804 7.273-6.665 7.083-6.496C7.073-6.476 7.014-6.426 6.974-6.336C6.575-5.36 6.267-4.354 5.968-3.337H3.298Z'/>
+<path id='g2-75' d='M1.953-6.356C1.843-4.184 .936-1.554 .349 0C.299 .12 .299 .139 .299 .149C.299 .219 .379 .219 .399 .219C.578 .219 .936 .03 1.096-.159C1.146-.229 2.441-3.487 2.74-6.017C2.79-6.416 2.809-6.824 2.809-6.864C2.809-6.984 2.809-7.024 2.7-7.024S2.291-6.874 2.092-6.775C1.634-6.545 1.255-6.356 1.255-6.177C1.255-6.117 1.325-6.117 1.365-6.117C1.455-6.117 1.474-6.117 1.953-6.356ZM7.243-1.265C7.243-1.275 7.243-1.355 7.123-1.355C7.073-1.355 6.964-1.345 6.824-1.235C6.705-1.156 6.685-1.126 6.635-.966C6.366-.209 5.39-.209 5.37-.209C4.403-.209 2.999-3.337 2.999-4.234C2.999-4.394 3.029-4.493 3.377-4.852C4.115-5.579 5.878-6.595 6.346-6.595C6.555-6.595 6.705-6.436 6.705-6.177C6.705-6.107 6.685-6.057 6.685-6.017C6.685-5.958 6.715-5.908 6.804-5.908C6.824-5.908 7.303-5.938 7.303-6.426C7.303-6.765 7.093-7.024 6.725-7.024C6.047-7.024 4.672-6.227 3.885-5.669C3.467-5.36 2.401-4.603 2.401-3.985C2.401-3.128 3.407-.976 4.125-.249C4.473 .09 4.682 .219 4.981 .219C5.758 .219 6.565-.189 6.944-.667C7.203-.986 7.243-1.235 7.243-1.265Z'/>
+<path id='g2-76' d='M1.793-.927C2.331-1.763 2.501-2.401 2.63-2.929C2.979-4.304 3.357-5.499 3.975-6.187C4.095-6.316 4.174-6.406 4.493-6.406C5.181-6.406 5.2-5.719 5.2-5.579C5.2-5.4 5.151-5.26 5.151-5.21C5.151-5.141 5.21-5.141 5.22-5.141C5.38-5.141 5.649-5.25 5.898-5.43C6.077-5.569 6.167-5.669 6.167-6.077C6.167-6.615 5.888-7.024 5.33-7.024C5.011-7.024 4.134-6.944 3.158-5.958C2.361-5.141 1.893-3.347 1.704-2.6C1.524-1.913 1.445-1.604 1.146-1.006C1.076-.887 .817-.448 .677-.319C.408-.07 .309 .11 .309 .159C.309 .179 .329 .219 .399 .219C.438 .219 .648 .179 .907 .01C1.076-.09 1.096-.11 1.325-.349C1.823-.339 2.172-.249 2.8-.07C3.308 .07 3.816 .219 4.324 .219C5.131 .219 5.948-.389 6.267-.827C6.466-1.096 6.526-1.345 6.526-1.375C6.526-1.445 6.466-1.445 6.456-1.445C6.296-1.445 6.057-1.335 5.888-1.215C5.619-1.046 5.599-.986 5.539-.817C5.489-.658 5.43-.578 5.39-.518C5.31-.399 5.3-.399 5.151-.399C4.672-.399 4.174-.548 3.517-.727C3.238-.807 2.69-.966 2.192-.966C2.062-.966 1.923-.956 1.793-.927Z'/>
+<path id='g2-96' d='M5.181-3.258C5.35-3.258 5.529-3.258 5.529-3.457S5.35-3.656 5.181-3.656H.946V-6.555C.946-6.735 .946-6.914 .747-6.914S.548-6.705 .548-6.555V-.359C.548-.209 .548 0 .747 0S.946-.179 .946-.359V-3.258H5.181Z'/>
+<path id='g1-32' d='M1.883-3.407C1.763-3.517 1.704-3.517 1.674-3.517C1.604-3.517 1.584-3.517 1.385-3.328L.707-2.73C.588-2.62 .548-2.58 .548-2.491C.548-2.381 .648-2.291 .747-2.291C.807-2.291 .827-2.291 .996-2.451C1.205-2.63 1.405-2.829 1.674-3.049L3.039-1.813C3.059-1.803 3.238-1.644 3.288-1.604C3.427-1.465 3.447-1.465 3.517-1.465S3.606-1.465 3.826-1.664L4.613-2.371L5.36-3.049L6.097-2.391C6.207-2.291 6.227-2.291 6.436-2.291H8.588C8.498-2.212 7.93-1.724 7.582-.827H7.89C8.06-1.285 8.448-1.993 9.385-2.491C8.448-2.999 8.05-3.706 7.89-4.154H7.582C7.93-3.258 8.498-2.77 8.588-2.69H6.356C5.968-3.049 5.858-3.158 5.629-3.357C5.45-3.517 5.43-3.517 5.36-3.517S5.27-3.497 5.161-3.407C5.131-3.387 3.736-2.122 3.517-1.933L1.883-3.407Z'/>
+<path id='g5-48' d='M3.599-2.225C3.599-2.992 3.508-3.543 3.187-4.031C2.971-4.352 2.538-4.631 1.981-4.631C.363-4.631 .363-2.727 .363-2.225S.363 .139 1.981 .139S3.599-1.723 3.599-2.225ZM1.981-.056C1.66-.056 1.234-.244 1.095-.816C.997-1.227 .997-1.799 .997-2.315C.997-2.824 .997-3.354 1.102-3.738C1.248-4.289 1.695-4.435 1.981-4.435C2.357-4.435 2.72-4.205 2.845-3.801C2.957-3.424 2.964-2.922 2.964-2.315C2.964-1.799 2.964-1.283 2.873-.844C2.734-.209 2.26-.056 1.981-.056Z'/>
+<path id='g2-20' d='M6.725-5.918C6.834-5.968 6.914-6.017 6.914-6.137C6.914-6.247 6.834-6.336 6.715-6.336C6.665-6.336 6.575-6.296 6.535-6.276L1.026-3.676C.857-3.597 .827-3.527 .827-3.447C.827-3.357 .887-3.288 1.026-3.228L6.535-.638C6.665-.568 6.685-.568 6.715-.568C6.824-.568 6.914-.658 6.914-.767C6.914-.857 6.874-.917 6.705-.996L1.494-3.447L6.725-5.918ZM6.565 1.365C6.735 1.365 6.914 1.365 6.914 1.166S6.705 .966 6.555 .966H1.186C1.036 .966 .827 .966 .827 1.166S1.006 1.365 1.176 1.365H6.565Z'/>
+<path id='g5-49' d='M2.336-4.435C2.336-4.624 2.322-4.631 2.127-4.631C1.681-4.191 1.046-4.184 .76-4.184V-3.933C.928-3.933 1.388-3.933 1.771-4.129V-.572C1.771-.342 1.771-.251 1.074-.251H.809V0C.934-.007 1.792-.028 2.05-.028C2.267-.028 3.145-.007 3.299 0V-.251H3.034C2.336-.251 2.336-.342 2.336-.572V-4.435Z'/>
+<path id='g4-83' d='M4.951-4.812C4.951-4.847 4.931-4.903 4.861-4.903C4.819-4.903 4.812-4.896 4.721-4.805L4.38-4.407C4.115-4.777 3.675-4.903 3.25-4.903C2.267-4.903 1.395-4.108 1.395-3.306C1.395-3.201 1.416-2.922 1.625-2.664C1.862-2.385 2.12-2.322 2.594-2.211C2.734-2.176 3.082-2.099 3.187-2.071C3.41-2.015 3.836-1.862 3.836-1.339C3.836-.774 3.243-.112 2.448-.112C1.834-.112 1.095-.328 1.095-1.102C1.095-1.172 1.109-1.325 1.137-1.451C1.144-1.478 1.144-1.485 1.144-1.492C1.144-1.583 1.06-1.583 1.032-1.583C.934-1.583 .928-1.569 .9-1.444L.544-.049C.537-.021 .523 .021 .523 .056C.523 .098 .551 .139 .621 .139C.663 .139 .669 .133 .76 .042C.837-.042 1.018-.265 1.095-.349C1.465 .056 2.008 .139 2.427 .139C3.48 .139 4.331-.767 4.331-1.59C4.331-1.897 4.205-2.176 4.052-2.336C3.808-2.587 3.703-2.615 2.803-2.824C2.657-2.859 2.427-2.915 2.364-2.936C2.19-2.999 1.897-3.173 1.897-3.571C1.897-4.122 2.518-4.679 3.243-4.679C3.996-4.679 4.359-4.254 4.359-3.592C4.359-3.501 4.331-3.34 4.331-3.278C4.331-3.18 4.414-3.18 4.449-3.18C4.554-3.18 4.561-3.215 4.589-3.333L4.951-4.812Z'/>
+<path id='g4-84' d='M3.389-4.219C3.438-4.421 3.452-4.442 3.605-4.456C3.64-4.463 3.884-4.463 4.024-4.463C4.449-4.463 4.631-4.463 4.805-4.407C5.119-4.31 5.133-4.108 5.133-3.857C5.133-3.745 5.133-3.654 5.084-3.292L5.07-3.215C5.07-3.145 5.119-3.11 5.189-3.11C5.293-3.11 5.307-3.173 5.321-3.285L5.509-4.617C5.509-4.714 5.426-4.714 5.3-4.714H1.011C.837-4.714 .823-4.714 .774-4.568L.335-3.333C.328-3.306 .3-3.243 .3-3.208C.3-3.18 .314-3.11 .418-3.11C.509-3.11 .523-3.145 .565-3.278C.969-4.394 1.2-4.463 2.26-4.463H2.552C2.762-4.463 2.769-4.456 2.769-4.394C2.769-4.387 2.769-4.352 2.741-4.247L1.82-.579C1.757-.321 1.736-.251 1.004-.251C.753-.251 .69-.251 .69-.098C.69-.077 .704 0 .809 0C1.004 0 1.213-.021 1.409-.021S1.813-.028 2.008-.028S2.441-.028 2.636-.021C2.824-.014 3.034 0 3.222 0C3.278 0 3.382 0 3.382-.153C3.382-.251 3.313-.251 3.096-.251C2.964-.251 2.824-.258 2.692-.265C2.455-.286 2.441-.314 2.441-.398C2.441-.446 2.441-.46 2.469-.558L3.389-4.219Z'/>
+<path id='g2-92' d='M6.087-3.786C6.087-5.3 4.563-5.958 3.318-5.958C2.022-5.958 .548-5.26 .548-3.796V-.139C.548 .04 .548 .219 .747 .219S.946 .04 .946-.139V-3.746C.946-5.24 2.57-5.559 3.318-5.559C3.766-5.559 4.394-5.469 4.922-5.131C5.689-4.643 5.689-4.005 5.689-3.736V-.139C5.689 .04 5.689 .219 5.888 .219S6.087 .04 6.087-.139V-3.786Z'/>
+<path id='g4-105' d='M2.26-4.359C2.26-4.47 2.176-4.624 1.981-4.624C1.792-4.624 1.59-4.442 1.59-4.24C1.59-4.122 1.681-3.975 1.869-3.975C2.071-3.975 2.26-4.17 2.26-4.359ZM.837-.816C.809-.725 .774-.642 .774-.523C.774-.195 1.053 .07 1.437 .07C2.134 .07 2.441-.893 2.441-.997C2.441-1.088 2.35-1.088 2.329-1.088C2.232-1.088 2.225-1.046 2.197-.969C2.036-.411 1.73-.126 1.458-.126C1.318-.126 1.283-.216 1.283-.37C1.283-.53 1.332-.663 1.395-.816C1.465-1.004 1.541-1.193 1.618-1.374C1.681-1.541 1.932-2.176 1.96-2.26C1.981-2.329 2.001-2.413 2.001-2.483C2.001-2.81 1.723-3.075 1.339-3.075C.649-3.075 .328-2.127 .328-2.008C.328-1.918 .425-1.918 .446-1.918C.544-1.918 .551-1.953 .572-2.029C.753-2.629 1.06-2.88 1.318-2.88C1.43-2.88 1.492-2.824 1.492-2.636C1.492-2.476 1.451-2.371 1.276-1.939L.837-.816Z'/>
+<path id='g2-56' d='M5.489-6.535C5.539-6.645 5.539-6.665 5.539-6.715C5.539-6.814 5.46-6.914 5.34-6.914C5.21-6.914 5.151-6.795 5.111-6.685L4.284-4.493H1.255L.428-6.685C.379-6.824 .329-6.914 .199-6.914C.1-6.914 0-6.814 0-6.715C0-6.695 0-6.675 .06-6.535L2.54-.01C2.59 .13 2.64 .219 2.77 .219C2.909 .219 2.949 .11 2.989 .01L5.489-6.535ZM1.415-4.095H4.125L2.77-.548L1.415-4.095Z'/>
+<path id='g5-43' d='M3.229-1.576H5.363C5.454-1.576 5.621-1.576 5.621-1.743C5.621-1.918 5.461-1.918 5.363-1.918H3.229V-4.059C3.229-4.149 3.229-4.317 3.062-4.317C2.887-4.317 2.887-4.156 2.887-4.059V-1.918H.746C.656-1.918 .488-1.918 .488-1.75C.488-1.576 .649-1.576 .746-1.576H2.887V.565C2.887 .656 2.887 .823 3.055 .823C3.229 .823 3.229 .663 3.229 .565V-1.576Z'/>
+<path id='g3-0' d='M5.189-1.576C5.3-1.576 5.467-1.576 5.467-1.743C5.467-1.918 5.307-1.918 5.189-1.918H1.032C.921-1.918 .753-1.918 .753-1.75C.753-1.576 .914-1.576 1.032-1.576H5.189Z'/>
+<path id='g4-110' d='M.851-.439C.823-.349 .781-.174 .781-.153C.781 0 .907 .07 1.018 .07C1.144 .07 1.255-.021 1.29-.084S1.381-.37 1.416-.516C1.451-.649 1.527-.969 1.569-1.144C1.611-1.297 1.653-1.451 1.688-1.611C1.764-1.897 1.778-1.953 1.981-2.239C2.176-2.518 2.504-2.88 3.027-2.88C3.431-2.88 3.438-2.525 3.438-2.392C3.438-1.974 3.138-1.2 3.027-.907C2.95-.711 2.922-.649 2.922-.53C2.922-.16 3.229 .07 3.585 .07C4.282 .07 4.589-.893 4.589-.997C4.589-1.088 4.498-1.088 4.477-1.088C4.38-1.088 4.373-1.046 4.345-.969C4.184-.411 3.884-.126 3.605-.126C3.459-.126 3.431-.223 3.431-.37C3.431-.53 3.466-.621 3.592-.934C3.675-1.151 3.961-1.89 3.961-2.28C3.961-2.957 3.424-3.075 3.055-3.075C2.476-3.075 2.085-2.72 1.876-2.441C1.827-2.922 1.416-3.075 1.13-3.075C.83-3.075 .669-2.859 .579-2.699C.425-2.441 .328-2.043 .328-2.008C.328-1.918 .425-1.918 .446-1.918C.544-1.918 .551-1.939 .6-2.127C.704-2.538 .837-2.88 1.109-2.88C1.29-2.88 1.339-2.727 1.339-2.538C1.339-2.406 1.276-2.148 1.227-1.96S1.109-1.485 1.074-1.332L.851-.439Z'/>
+<path id='g4-106' d='M3.062-4.359C3.062-4.477 2.971-4.624 2.783-4.624C2.58-4.624 2.392-4.428 2.392-4.24C2.392-4.129 2.476-3.975 2.671-3.975C2.859-3.975 3.062-4.156 3.062-4.359ZM1.583 .342C1.465 .823 1.095 1.227 .683 1.227C.593 1.227 .509 1.213 .432 1.186C.614 1.102 .669 .934 .669 .83C.669 .663 .537 .572 .398 .572C.181 .572 0 .76 0 .983C0 1.248 .272 1.423 .69 1.423S1.925 1.172 2.141 .321L2.769-2.176C2.79-2.253 2.803-2.315 2.803-2.42C2.803-2.803 2.476-3.075 2.057-3.075C1.283-3.075 .837-2.106 .837-2.008C.837-1.918 .934-1.918 .955-1.918C1.039-1.918 1.046-1.939 1.095-2.043C1.269-2.448 1.632-2.88 2.036-2.88C2.211-2.88 2.273-2.762 2.273-2.538C2.273-2.462 2.26-2.364 2.253-2.329L1.583 .342Z'/>
+<path id='g2-50' d='M5.46-2.291C5.629-2.291 5.808-2.291 5.808-2.491S5.629-2.69 5.46-2.69H1.235C1.355-4.025 2.501-4.981 3.905-4.981H5.46C5.629-4.981 5.808-4.981 5.808-5.181S5.629-5.38 5.46-5.38H3.885C2.182-5.38 .827-4.085 .827-2.491S2.182 .399 3.885 .399H5.46C5.629 .399 5.808 .399 5.808 .199S5.629 0 5.46 0H3.905C2.501 0 1.355-.956 1.235-2.291H5.46Z'/>
+<path id='g2-91' d='M6.087-5.599C6.087-5.778 6.087-5.958 5.888-5.958S5.689-5.778 5.689-5.599V-1.993C5.689-.498 4.065-.179 3.318-.179C2.869-.179 2.242-.269 1.714-.608C.946-1.096 .946-1.733 .946-2.002V-5.599C.946-5.778 .946-5.958 .747-5.958S.548-5.778 .548-5.599V-1.953C.548-.438 2.072 .219 3.318 .219C4.613 .219 6.087-.478 6.087-1.943V-5.599Z'/>
+<path id='g2-33' d='M8.309-2.291C7.761-1.873 7.492-1.465 7.412-1.335C6.964-.648 6.884-.02 6.884-.01C6.884 .11 7.004 .11 7.083 .11C7.253 .11 7.263 .09 7.303-.09C7.532-1.066 8.12-1.903 9.245-2.361C9.365-2.401 9.395-2.421 9.395-2.491S9.335-2.59 9.315-2.6C8.877-2.77 7.671-3.268 7.293-4.941C7.263-5.061 7.253-5.091 7.083-5.091C7.004-5.091 6.884-5.091 6.884-4.971C6.884-4.951 6.974-4.324 7.392-3.656C7.592-3.357 7.88-3.009 8.309-2.69H.907C.727-2.69 .548-2.69 .548-2.491S.727-2.291 .907-2.291H8.309Z'/>
+<path id='g0-97' d='M3.278-5.071C3.218-5.23 3.168-5.29 3.059-5.29C2.919-5.29 2.899-5.23 2.849-5.101L1.245-.986C1.136-.717 .966-.269 .339-.249V0C.558-.02 .847-.03 1.066-.03C1.235-.03 1.694-.01 1.893 0V-.249C1.474-.269 1.445-.608 1.445-.697C1.445-.777 1.445-.797 1.783-1.684H3.846L4.065-1.126C4.144-.927 4.274-.588 4.274-.528C4.274-.249 3.915-.249 3.746-.249V0C4.015-.01 4.603-.03 4.802-.03C5.141-.03 5.529-.01 5.768 0V-.249C5.21-.249 5.121-.299 4.991-.648L3.278-5.071ZM3.746-1.933H1.883L2.819-4.334L3.746-1.933Z'/>
+<path id='g0-99' d='M4.742-4.633C4.533-4.852 4.045-5.26 3.298-5.26C1.793-5.26 .508-4.075 .508-2.56S1.793 .139 3.298 .139C4.593 .139 5.38-.897 5.38-1.763C5.38-1.853 5.38-1.923 5.25-1.923C5.141-1.923 5.141-1.863 5.131-1.763C5.061-.707 4.204-.11 3.367-.11C2.869-.11 1.365-.379 1.365-2.56C1.365-4.772 2.909-5.011 3.357-5.011C4.085-5.011 4.932-4.493 5.121-3.228C5.141-3.158 5.151-3.098 5.25-3.098C5.38-3.098 5.38-3.148 5.38-3.337V-5.021C5.38-5.181 5.38-5.26 5.28-5.26C5.22-5.26 5.21-5.24 5.131-5.141L4.742-4.633Z'/>
+<path id='g0-108' d='M4.712-1.933H4.463C4.384-1.136 4.284-.249 2.889-.249H2.262C1.913-.249 1.863-.279 1.863-.677V-4.374C1.863-4.872 2.012-4.872 2.76-4.872V-5.121C2.471-5.111 1.833-5.091 1.534-5.091C1.285-5.091 .787-5.111 .428-5.121V-4.872C1.096-4.872 1.146-4.812 1.146-4.403V-.717C1.146-.309 1.096-.249 .428-.249V0H4.523L4.712-1.933Z'/>
+<path id='g0-111' d='M5.828-2.54C5.828-4.025 4.643-5.26 3.168-5.26C1.684-5.26 .508-4.025 .508-2.54C.508-1.036 1.714 .139 3.168 .139S5.828-1.036 5.828-2.54ZM3.168-.12C2.461-.12 1.365-.687 1.365-2.65C1.365-4.523 2.501-5.011 3.168-5.011C3.846-5.011 4.971-4.513 4.971-2.65C4.971-.687 3.875-.12 3.168-.12Z'/>
+</defs>
+</svg>
+
+</body>
+<script type="text/javascript">
+  Reveal.initialize({
+          history: true,
+          transition: "none",
+          width: 1600,
+          height: 900,
+          center: false,
+          controls: false,
+          progress: false,
+          slideNumber: true
+      });
+  Reveal.configure({
+          history: true,
+          transition: "none",
+          width: 1600,
+          height: 900,
+          center: false,
+          controls: false,
+          progress: false,
+          slideNumber: true
+     });
+</script>
+<script>
+    // initialize printing
+    revealConfig.initPrint();
+    // initialize background embedded images
+    revealConfig.getEmbeddedImages();
+    </script>
+</html>
