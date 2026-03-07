@@ -1,7 +1,7 @@
 ---
 layout: page
 title: History
-nav_order: 4
+nav_order: 3
 ---
 
 In December 1968, IFIP Working Group 2.1 adopted Aad van Wijngaarden's proposal as a successor to Algol 60, ultimately leading to ALGOL 68. A group of WG2.1 members opposed the proposal and produced a minority report. They also felt that rather than just programming languages, a forum was needed to discuss the general problem of programming. Another impetus was the findings of the first of the NATO Software Engineering Conferences, held in 1968, which spoke of the "software crisis" then seen as gripping the computing world.
