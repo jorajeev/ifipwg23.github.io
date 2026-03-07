@@ -16,6 +16,10 @@ The founding members were predominantly academic, and a deliberate attempt was m
 
 In its initial years, WG2.3 did not produce reports of any kind of its meetings. Meetings centered on the presentation and discussion of research underway, which meant that members could receive their colleagues' constructive criticism at a much earlier stage than usual. As such, WG2.3 became a productive assembly at which researchers such as Dijkstra could work out many of the ideas that they subsequently brought forth in published papers.
 
-In the late 1970s, it was felt that WG2.3 should make more public the nature of its work and what had been accomplished. Accordingly, the book *Programming Methodology: A Collection of Articles by Members of IFIP WG2.3* (edited by David Gries, Springer-Verlag, 1978) was published. In 2003, a second book *Programming Methodology* (edited by Annabelle McIver and Carroll Morgan, Springer-Verlag) was published, containing both new material and reviews of areas and problems for further investigation.
+In the late 1970s, it was felt that WG2.3 should make more public the nature of its work and what had been accomplished. Accordingly, the book *Programming Methodology* [[1]](#ref1) was published. In 2003, a second book *Programming Methodology* (edited by Annabelle McIver and Carroll Morgan, Springer-Verlag) was published, containing both new material and reviews of areas and problems for further investigation.
 
-For more on the history of WG2.3, see Mike Woodger's essay "A History of IFIP WG2.3" in the 1978 book, and the [Wikipedia article on IFIP Working Group 2.3](https://en.wikipedia.org/wiki/IFIP_Working_Group_2.3).
+For more on the history of WG2.3, see Mike Woodger's essay "A History of IFIP WG2.3" in the 1978 book [[1]](#ref1), and the [Wikipedia article on IFIP Working Group 2.3](https://en.wikipedia.org/wiki/IFIP_Working_Group_2.3).
+
+---
+
+<a id="ref1"></a> **[1]** David Gries (ed.), [*Programming Methodology: A Collection of Articles by Members of IFIP WG2.3*](https://link.springer.com/book/10.1007/978-1-4612-6315-9), Springer-Verlag, 1978.
