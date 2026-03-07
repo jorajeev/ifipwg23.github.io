@@ -1,60 +1,56 @@
 ---
 layout: page
-title: Meeting 69
+title: "#69: Athens, May 2025"
 location: Athens, Greece
-date: May 19 - 23, 2025
-parent: Meetings
+date: 19–23 May 2025
+parent: "Meetings 60–70"
+grand_parent: Meetings
+nav_order: 931
 ---
 
-<h2>Host: Sophia Drossopoulou</h2>
+## Meeting 69
 
-<h2>Sessions</h2>
+**Host:** Sophia Drossopoulou  
+**Location:** Athens, Greece  
+**Dates:** 19–23 May 2025
 
-<h3>Monday 19 May</h3>
-<ul>
-<li><b>All attendees</b>, roundtable introduction</li>
-<li><b>Peter Müller</b>, <a href="../../assets/meetings/meeting-069/mueller.pdf">Hyper Hoare Logic</a></li>
-<li><b>Brijesh Dongol</b>, <a href="../../assets/meetings/meeting-069/dongol.pdf">Correctly Programming Remote Direct Memory Access</a></li>
-<li><b>Oded Padon</b>, Duality and primal-dual algorithms in program verification</li>
-<li><b>Justin Hsu</b>, <a href="../../assets/meetings/meeting-069/hsu.pdf">Type Systems for Numerical Error Analysis</a></li>
-<li><b>Benjamin Kaminski</b>, <a href="../../assets/meetings/meeting-069/kaminski.pdf">Iteration Logic - a logic for reasoning about fixed points of endomaps on complete lattices</a></li>
-</ul>
+## Talks
 
-<h3>Tuesday 20 May</h3>
-<ul>
-<li><b>Rustan Leino</b>, <a href="../../assets/meetings/meeting-069/leino.pdf">Reasoning about allocation</a></li>
-<li><b>Alberto Griggio</b>, Information exchange for software verification</li>
-<li><b>Clement Pit-Claudel</b>, Modern regular expressions, with a focus on semantics and matching complexity</li>
-<li><b>Mae Milano</b>, <a href="../../assets/meetings/meeting-069/milano.pdf">Gambit: sequential consistency without coordination in distributed programming languages</a></li>
-<li><b>Ori Lahav</b>, <a href="../../assets/meetings/meeting-069/lahav.pdf">Hyperproperty-Preserving Register Specifications</a></li>
-<li><b>Roderick Bloem</b>, Learning a Mealy machine from a language</li>
-<li><b>Viktor Vafeiadis</b>, Automatically establishing correctness of concurrent libraries</li>
-</ul>
+### Monday 19 May
+- *All attendees, roundtable introduction*
+- **Peter Müller**, *[Hyper Hoare Logic](../../assets/meetings/meeting-069/mueller.pdf)*
+- **Brijesh Dongol**, *[Correctly Programming Remote Direct Memory Access](../../assets/meetings/meeting-069/dongol.pdf)*
+- **Oded Padon**, *Duality and primal-dual algorithms in program verification*
+- **Justin Hsu**, *[Type Systems for Numerical Error Analysis](../../assets/meetings/meeting-069/hsu.pdf)*
+- **Benjamin Kaminski**, *[Iteration Logic - a logic for reasoning about fixed points of endomaps on complete lattices](../../assets/meetings/meeting-069/kaminski.pdf)*
 
-<h3>Wednesday 21 May</h3>
-<ul>
-<li><b>Cliff Jones</b>, <a href="../../assets/meetings/meeting-069/jones.pdf">Rely-Guarantee `thinking’ for Real-Time Scheduling</a></li>
-<li><b>Zoe Paraskevopoulou</b>, Correctness for the Ground Up for Ethereum Smart Contracts</li>
-<li><b>Alex Summers</b>, <a href="../../assets/meetings/meeting-069/summers.pdf">Place Capability Graphs: A General-Purpose Model of Rust’s Ownership and Borrowing System</a></li>
-<li><b>Roland Meyer</b>, <a href="../../assets/meetings/meeting-069/meyer.pdf">Verification under Weak Consistency and Recent Decidability Results in Verification</a></li>
-</ul>
+### Tuesday 20 May
+- **Rustan Leino**, *[Reasoning about allocation](../../assets/meetings/meeting-069/leino.pdf)*
+- **Alberto Griggio**, *Information exchange for software verification*
+- **Clement Pit-Claudel**, *Modern regular expressions, with a focus on semantics and matching complexity*
+- **Mae Milano**, *[Gambit: sequential consistency without coordination in distributed programming languages](../../assets/meetings/meeting-069/milano.pdf)*
+- **Ori Lahav**, *[Hyperproperty-Preserving Register Specifications](../../assets/meetings/meeting-069/lahav.pdf)*
+- **Roderick Bloem**, *Learning a Mealy machine from a language*
+- **Viktor Vafeiadis**, *Automatically establishing correctness of concurrent libraries*
 
-<h3>Thursday 22 May</h3>
-<ul>
-<li><b>Mark Santolucito</b>, </li>
-<li><b>Stephan Merz</b>, <a href="../../assets/meetings/meeting-069/merz.pdf">TLA+ Proof System</a></li>
-<li><i>Members' Meeting</i></li>
-<li><b>Gerwin Klein</b>, The next 700 verified kernels</li>
-<li><b>Sophia Drossopoulou</b>, </li>
-<li><b>Thomas Wies</b>, Characterizing Implementability of Global Protocol Specifications</li>
-</ul>
+### Wednesday 21 May
+- **Cliff Jones**, *[Rely-Guarantee ‘thinking’ for Real-Time Scheduling](../../assets/meetings/meeting-069/jones.pdf)*
+- **Zoe Paraskevopoulou**, *Correctness for the Ground Up for Ethereum Smart Contracts*
+- **Alex Summers**, *[Place Capability Graphs: A General-Purpose Model of Rust’s Ownership and Borrowing System](../../assets/meetings/meeting-069/summers.pdf)*
+- **Roland Meyer**, *[Verification under Weak Consistency and Recent Decidability Results in Verification](../../assets/meetings/meeting-069/meyer.pdf)*
 
-<h3>Friday 23 May</h3>
-<ul>
-<li><b>Sophia Drossopoulou</b>, <a href="../../assets/meetings/meeting-069/drossopoulou.pdf">Holistic Specifications and Reasoning about External Calls</a></li>
-<li><b>Yannis Smaragdakis</b>, <a href="../../assets/meetings/meeting-069/smaragdakis.pdf">Program Analysis for High-Value Smart Contract Vulnerabilities</a></li>
-<li><b>Kostis Sagonas</b>, Optimal Algorithms for Stateless Model Checking</li>
-<li><b>Gerwin Klein</b>, </li>
-<li><b>Grace Dinh</b>, </li>
-<li><b>Rajeev Joshi</b>, Checking Concurrent Production Code</li>
-</ul>
+### Thursday 22 May
+- **Mark Santolucito**
+- **Stephan Merz**, *[TLA+ Proof System](../../assets/meetings/meeting-069/merz.pdf)*
+- *Members' Meeting*
+- **Gerwin Klein**, *The next 700 verified kernels*
+- **Sophia Drossopoulou**
+- **Thomas Wies**, *Characterizing Implementability of Global Protocol Specifications*
+
+### Friday 23 May
+- **Sophia Drossopoulou**, *[Holistic Specifications and Reasoning about External Calls](../../assets/meetings/meeting-069/drossopoulou.pdf)*
+- **Yannis Smaragdakis**, *[Program Analysis for High-Value Smart Contract Vulnerabilities](../../assets/meetings/meeting-069/smaragdakis.pdf)*
+- **Kostis Sagonas**, *Optimal Algorithms for Stateless Model Checking*
+- **Gerwin Klein**
+- **Grace Dinh**
+- **Rajeev Joshi**, *Checking Concurrent Production Code*

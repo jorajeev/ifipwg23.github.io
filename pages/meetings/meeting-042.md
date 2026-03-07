@@ -1,66 +1,70 @@
 ---
 layout: page
-title: "Meeting 042"
-location: "Philadelphia, PA, USA"
-date: "5-9 January 2004"
-parent: Meetings
+title: "#42: Philadelphia, Jan 2004"
+location: Philadelphia, PA, USA
+date: 5–9 January 2004
+parent: "Meetings 40–49"
+grand_parent: Meetings
+nav_order: 958
 ---
 
-<h3>Host: Ernie Cohen</h3>
+## Meeting 42
 
-<p>Where:  Philadelphia, Pennsylvania, USA
-When:  5-9 January 2004
-Host:  Ernie Cohen</p>
+**Host:** Ernie Cohen  
+**Location:** Philadelphia, PA, USA  
+**Dates:** 5–9 January 2004
 
-<h2>Topics of discussion</h2>
-<ul>
-	<li>Rajeev Alur, <i>Software synthesis from hybrid automata</i></li>
-	<li>Manfred Broy, <i>Services and features: specification and multi-view modeling of software systems</i></li>
-	<li>Michael Butler, <i>Modelling and reasoning about long-running business transactions</i>We recently collaborated with a group at IBM UK Labs on formalizing compensation mechanisms in long-running transactions.  An outcome of this collaboration was a formal modeling language called StAC (Structured Activity Compensation).  This language is similar to process algebraic languages such as Hoare's CSP or Milner's CCS but StAC has additional operators dealing with compensation and with early termination of processes. Compensation and termination are also found in languages such as XLANG, BPEL4WS and BPML.  I propose to give an overview of the StAC language, its semantics and its relationship with BPEL4WS.  I also propose to discuss some ideas on reasoning about StAC processes. This work is joint work with Carla Ferreira.</li>
-	<li>Ernie Cohen, <i>The NGSCB Nexus</i>The goal of Microsoft's NGSCB project is to turn the PC into a trustworthy computing platform.  The heart of NGSCB is the (inner) nexus, a small exokernel that allows a number of concurrently executing, mutually distrustful supervisor-mode components to safely share hardware resources.  I'll describe the nexus and how we're assuring its correctness.</li>
-	<li>Masami Hagiya, <i>UML Scrapbook and Realization of Snapshot Programming Environment</i>
-(joint work with Richard Potter et al.)We have developed SBUML (Scrapbook for UML), an extension of UML (User-Mode Linux), by adding the checkpointing functionality to UML.  In this paper, we first describe the design and implementation of SBUML, and then propose a new snapshot programming environment, which is realized by the SBUML programming interfaces. The intended applications of SBUML include intrusion detection and sandboxing for network security, and software model checking for verifying multi-threaded programs. In particular, using snapshot programming, one can easily enumerate state spaces of programs actually running under Linux.</li>
-	<li><img src="http://research.microsoft.com/en-us/um/people/leino/IFIP-WG2.3/media/42/Harrison.jpg" alt="John Harrison">John Harrison, <i>Formal verification of mathematical algorithms</i></li>
-	<li>Daniel Jackson, <i>Subtypes for specification</i>We've developed a new type system for Alloy that incorporates subtypes, ad hoc union types, and parametric polymorphism in a surprisingly simple way. Type errors correspond to expressions that are redundant, in the sense that their value doesn't affect the value of the formula as a whole. Using subtypes, we can also decompose formulas for more efficient analysis.</li>
-	<li><img src="http://research.microsoft.com/en-us/um/people/leino/IFIP-WG2.3/media/42/Michael-Jackson.jpg" alt="Michael Jackson">Michael Jackson</li>
-	<li>Gary T. Leavens, <i>Advances and Issues in JML</i>The Java Modeling Language (JML, see <a href="http://jmlspecs.org/">jmlspecs.org</a>) is a behavioral interface specification language tailored to Java.  Its goals are to help record detailed design decisions about Java classes and interfaces and to support a wide range of tools that help programmers.  JML combines features of Eiffel, the Larch family of interface specification languages, and the refinement calculus.  JML is an open project that is intended to foster some commonality among the specification notations used by various groups doing research on formal methods for Java programs.
+## Talks
 
-<img src="http://research.microsoft.com/en-us/um/people/leino/IFIP-WG2.3/media/42/Leavens-et-al.jpg" alt="Gary Leavens et al.">This talk briefly describes some advances that JML's design has made over these other specification languages.  It then focuses on problems and issues remaining in its design.  In particular it describes the following advances and issues related to them: purity checking to prevent side effects in assertions, and protected and private specifications.  Time permitting, other issues can also be discussed.
-
-This talk is based in part on joint work with Curt Clifton, Clyde Ruby, and others at Iowa State, and also with Rustan Leino, Erik Poll, Bart Jacobs, Michael Ernst, and others.  The work is supported in part by the NSF under grant CCR-0097907 and CCR-0113181.  An earlier version of this talk was given at the FMCO 2002 conference.
-<ul>
-	<li>Gary T. Leavens, Yoonsik Cheon, Curtis Clifton, Clyde Ruby, and David R. Cok.  <i>How the Design of JML Accommodates Both Runtime Assertion Checking and Formal Verification</i>.  In Frank S. de Boer, Marcello M. Bonsangue, Susanne Graf, and Willem-Paul de Roever, editors, Formal Methods for Components and Objects, pages 262-284.  Volume 2852 of Lecture Notes in Computer Science, Springer Verlag, Berlin, 2003.  Also Department of Computer Science, Iowa State University, <a href="http://archives.cs.iastate.edu/documents/disk0/00/00/02/99/index.html">TR #03-04</a>, March 2003 [<a href="ftp://ftp.cs.iastate.edu/pub/techreports/TR03-04/TR.pdf">PDF</a>].</li>
-</ul>
-</li>
-	<li>K. Rustan M. Leino, <i>Abstract interpretation for heap structures</i>Many abstract domains are defined over a program state space whose form is a Cartesian product of variables, that is, where each variable is an independent coordinate.  A particular abstract domain may keep track of a relation between some variables, say those variables with integer values, and ignore the others.  For an object-oriented program, one can think of the heap as one big variable: a two-dimensional matrix indexed by object identities and field names.  For the heap variable, one would like to relate the values at certain locations (object-field pairs) with each other and with other program variables, which independent-coordinate abstract domains don't immediately do.  I will present the preliminary design of a system for doing abstract interpretation over a program state space that includes such a heap variable.  The design is parameterized by any independent-coordinate abstract domain.  It automatically maintains new variable names for interesting heap locations, letting the underlying abstract domain operate on these variables.</li>
-	<li><img src="http://research.microsoft.com/en-us/um/people/leino/IFIP-WG2.3/media/42/McIver-in-restaurant.jpg" alt="Annabelle McIver">Annabelle McIver, <i>Probabilistic loop guards</i></li>
-	<li>Dominique Méry, <i>Incremental Proof-based Design of Models for Deriving System On Chip Architecture
-</i>
-The Digital Video Broadcasting (DVB) set of digital TV standards specify baseline systems for various transmission media: satellite, cable, terrestrial, ...  Each baseline system standard defined the channel coding and modulation schemes for the transmission medium.  The source coding is adapted from the MPEG-2 standard.  The design of these systems requires a common understanding of measurement techniques and the interpretation of measurement results.  The document ETSI TR 101 290 gives recommendations in this field for defining measurement techniques; it introduces measurement guidelines for DVB systems, especially the evaluation of parameters specific to the terrestrial DVB environment (DVB-T).  The goal is to measure and to analyse the MPEG-2 Transport Stream with respect to recommended parameters.The evaluation of the quality of signal transmission is a critical issue for the DVB-T context; it requires the design of a monitoring tool conform to the normalisation documents.  Moreover, the tool should be built with respect to criteria related to hardware constraints.  The main problem is to get a model of the monitoring tool from the normalisation documents.
-
-The methodology, for designing models of system from requirements, leads to formally justified hints on the future architectural choices of that system; it based on the B event-based method, which integrates the incremental development of models using a theorem prover to validate each step of development called refinement.  It shows that interactions with non-specialists partners are possible.  Moreover, graphs over parameters called dependency graphs are derived from abstract mathematical models of the system; they express a hierarchy among parameters which is automatically validated through the refinement process; they provide hints for the future architecture of the SoC: decisions of implementations for computing parameters.  Finally, the refinement process expresses a relationship over system models and over dependency graphs.  Future works are related to the derivation of an architecture and codes from models.</li>
-	<li>Bertrand Meyer, <i>Proving object-oriented components</i></li>
-	<li><img src="http://research.microsoft.com/en-us/um/people/leino/IFIP-WG2.3/media/42/Morgan-and-Alur.jpg" alt="Carroll Morgan and Rajeev Alur">Carroll Morgan, <i>Exact expected convergence time for Herman's Ring</i>"Herman's Ring" is an algorithm for self-stabilisation of a token ring, and dates from about 1990.  Its expected time to stabilisation is was originally stated to be O(n^2 * log.n); since then it has been improved to O(n^2).
-
-Recently we have found an -exact- solution, in probabilistic programming logic, for the expected time to stabilisation from initial states comprising just three tokens (and it is Theta(n^2)). I will show how that is proved.
-
-However... at
-
-<a href="http://www.cs.bham.ac.uk/~dxp/prism/casestudies/self-stabilisation.html#herman">http://www.cs.bham.ac.uk/~dxp/prism/casestudies/self-stabilisation.html#herman</a>
-
-there is a tabulation (using the PRISM probabilistic model-checker) of expected convergence from <i>demonically</i> selected initial states (ie any odd number of tokens initially, not just three, from 1 up to the number of processors N) --- it is calculated effectively by simulation (via Markov matrices) for values of N from 1,3... up to 17.
-
-We noticed that each one of those steps-to-stabilisation results for the worst case among demonically chosen initial token numbers, obtained with PRISM, agrees with our exact value for just three tokens obtained via logic.  Can it be proved therefore that the three-token case is no faster on average than <i>any</i> of the other odd-number-of-token cases, so that our exact solution will apply in general?</li>
-	<li><img src="http://research.microsoft.com/en-us/um/people/leino/IFIP-WG2.3/media/42/Dinner.jpg" alt="Formal dinner">Madhu Parthasarathy, <i>Pending Calls and Matching Returns in Temporal Specifications</i>Model checking of linear temporal logic (LTL) specifications with respect to pushdown systems has been shown to be a useful tool for analysis of programs with potentially recursive procedures.  LTL, however, can specify only regular properties, and properties such as correctness of procedures with respect to pre and post conditions, that require matching of calls and returns, are not regular.  In this paper, we introduce a temporal logic of calls and returns (Caret) for specification and algorithmic verification of correctness requirements of structured programs.  The formulas of Caret are interpreted over sequences of propositional valuations tagged with special symbols "call" and "ret".  Besides the standard global temporal modalities, Caret admits the abstract-next operator that allows a path to jump from a call to the matching return.  This operator can be used to specify a variety of non-regular properties such as partial and total correctness of program blocks with respect to pre and post conditions.  The abstract versions of the other temporal modalities can be used to specify regular properties of local paths within a procedure that skip over calls to other procedures.  Caret also admits the last-caller modality that jumps to the most recent pending call, and such caller modalities allow specification of a variety of security properties that involve inspection of the call-stack.  Even though verifying context-free properties of pushdown systems is undecidable, we show that model checking Caret formulas against a pushdown model is decidable.  We present a tableau construction that reduces our model checking problem to the emptiness problem for a Buchi pushdown system.  The complexity of model checking Caret formulas is the same as that of checking LTL formulas, namely, polynomial in the model and singly exponential in the size of the specification.</li>
-	<li>Benjamin C. Pierce, <i>Harmony: A synchronization framework for tree-structured data</i>Increased use of optimistic data replication has led to increased interest in SYNCHRONIZATION technologies. These technologies are not only a fact of life in present-day networks; they are fascinating, and they raise a host of challenging scientific questions.
-
-<img src="http://research.microsoft.com/en-us/um/people/leino/IFIP-WG2.3/media/42/Leino-and-Sintzoff.jpg" alt="Rustan Leino and Michel Sintzoff">The goal of the Harmony project is to develop a generic framework for synchronizing tree-structured data---i.e., a tool for propagating updates between different copies, possibly stored in different formats, of tree-shaped data structures. For example, Harmony can be used to synchronize the bookmark files of several different web browsers, allowing bookmarks and bookmark folders to be added, deleted, edited, and reorganized by users running different browsers on disconnected machines. Other Harmony instances under development include synchronizers for calendars (Palm DateBook, ical, and iCalendar formats), address books, Keynote presentations, structured documents, file systems, and generic XML and HTML.
-
-The beginning of the talk will be a brief guided tour of the Harmony system, touching on basic design issues (in particular, the tradeoffs between Harmony's ``state-based'' architecture and ``operation-based'' alternatives), on the core synchronization engine and its properties, and on the domain-specific programming language used to transform ``concrete data'' from the real world into abstracted forms suitable for synchronization.  Most of the talk will focus on current research challenges.
-
-Harmony is joint work with Michael Greenwald and Alan Schmitt.</li>
-	<li><img src="http://research.microsoft.com/en-us/um/people/leino/IFIP-WG2.3/media/42/Zave.jpg" alt="Pamela Zave">Michel Sintzoff</li>
-	<li>Geoffrey Washburn</li>
-	<li>Pamela Zave,  <i>Symmetry in network connections</i>Usually, protocols and features for telecommunications are highly asymmetric--they make a strong distinction between the initiating and receiving ends. However, experience shows that many feature functions are symmetric, and many end-to-end connections consist of segments set up in alternating directions. The question: how can we organize and analyze network connections, when taking this richer view?</li>
-</ul>
-<p>Pictures taken by Daniel Jackson, Bertrand Meyer, and Carroll Morgan.</p>
+- **Rajeev Alur**, *Software synthesis from hybrid automata*
+- **Manfred Broy**, *Services and features: specification and multi-view modeling of software systems*
+- **Michael Butler**, *Modelling and reasoning about long-running business transactions*
+  <details><summary>Abstract</summary>
+  We recently collaborated with a group at IBM UK Labs on formalizing compensation mechanisms in long-running transactions. An outcome of this collaboration was a formal modeling language called StAC (Structured Activity Compensation). This language is similar to process algebraic languages such as Hoare's CSP or Milner's CCS but StAC has additional operators dealing with compensation and with early termination of processes. Compensation and termination are also found in languages such as XLANG, BPEL4WS and BPML. I propose to give an overview of the StAC language, its semantics and its relationship with BPEL4WS. I also propose to discuss some ideas on reasoning about StAC processes. This work is joint work with Carla Ferreira.
+  </details>
+- **Ernie Cohen**, *The NGSCB Nexus*
+  <details><summary>Abstract</summary>
+  The goal of Microsoft's NGSCB project is to turn the PC into a trustworthy computing platform. The heart of NGSCB is the (inner) nexus, a small exokernel that allows a number of concurrently executing, mutually distrustful supervisor-mode components to safely share hardware resources. I'll describe the nexus and how we're assuring its correctness.
+  </details>
+- **Masami Hagiya**, *UML Scrapbook and Realization of Snapshot Programming Environment*
+  <details><summary>Abstract</summary>
+  Joint work with Richard Potter et al. We have developed SBUML (Scrapbook for UML), an extension of UML (User-Mode Linux), by adding the checkpointing functionality to UML. In this paper, we first describe the design and implementation of SBUML, and then propose a new snapshot programming environment, which is realized by the SBUML programming interfaces. The intended applications of SBUML include intrusion detection and sandboxing for network security, and software model checking for verifying multi-threaded programs. In particular, using snapshot programming, one can easily enumerate state spaces of programs actually running under Linux.
+  </details>
+- **John Harrison**, *Formal verification of mathematical algorithms*
+- **Daniel Jackson**, *Subtypes for specification*
+  <details><summary>Abstract</summary>
+  We've developed a new type system for Alloy that incorporates subtypes, ad hoc union types, and parametric polymorphism in a surprisingly simple way. Type errors correspond to expressions that are redundant, in the sense that their value doesn't affect the value of the formula as a whole. Using subtypes, we can also decompose formulas for more efficient analysis.
+  </details>
+- **Michael Jackson**
+- **Gary T. Leavens**, *Advances and Issues in JML*
+  <details><summary>Abstract</summary>
+  The Java Modeling Language (JML) is a behavioral interface specification language tailored to Java. Its goals are to help record detailed design decisions about Java classes and interfaces and to support a wide range of tools that help programmers. JML combines features of Eiffel, the Larch family of interface specification languages, and the refinement calculus. JML is an open project that is intended to foster some commonality among the specification notations used by various groups doing research on formal methods for Java programs. This talk briefly describes some advances that JML's design has made over these other specification languages. It then focuses on problems and issues remaining in its design. In particular it describes the following advances and issues related to them: purity checking to prevent side effects in assertions, and protected and private specifications. This talk is based in part on joint work with Curt Clifton, Clyde Ruby, and others at Iowa State, and also with Rustan Leino, Erik Poll, Bart Jacobs, Michael Ernst, and others.
+  </details>
+- **K. Rustan M. Leino**, *Abstract interpretation for heap structures*
+  <details><summary>Abstract</summary>
+  Many abstract domains are defined over a program state space whose form is a Cartesian product of variables, that is, where each variable is an independent coordinate. A particular abstract domain may keep track of a relation between some variables, say those variables with integer values, and ignore the others. For an object-oriented program, one can think of the heap as one big variable: a two-dimensional matrix indexed by object identities and field names. For the heap variable, one would like to relate the values at certain locations (object-field pairs) with each other and with other program variables, which independent-coordinate abstract domains don't immediately do. I will present the preliminary design of a system for doing abstract interpretation over a program state space that includes such a heap variable. The design is parameterized by any independent-coordinate abstract domain. It automatically maintains new variable names for interesting heap locations, letting the underlying abstract domain operate on these variables.
+  </details>
+- **Annabelle McIver**, *Probabilistic loop guards*
+- **Dominique Mery**, *Incremental Proof-based Design of Models for Deriving System On Chip Architecture*
+  <details><summary>Abstract</summary>
+  The Digital Video Broadcasting (DVB) set of digital TV standards specify baseline systems for various transmission media: satellite, cable, terrestrial. The design of these systems requires a common understanding of measurement techniques and the interpretation of measurement results. The evaluation of the quality of signal transmission is a critical issue for the DVB-T context; it requires the design of a monitoring tool conform to the normalisation documents. The methodology, for designing models of system from requirements, leads to formally justified hints on the future architectural choices of that system; it is based on the B event-based method, which integrates the incremental development of models using a theorem prover to validate each step of development called refinement. Dependency graphs are derived from abstract mathematical models of the system; they express a hierarchy among parameters which is automatically validated through the refinement process; they provide hints for the future architecture of the SoC.
+  </details>
+- **Bertrand Meyer**, *Proving object-oriented components*
+- **Carroll Morgan**, *Exact expected convergence time for Herman's Ring*
+  <details><summary>Abstract</summary>
+  "Herman's Ring" is an algorithm for self-stabilisation of a token ring, and dates from about 1990. Its expected time to stabilisation was originally stated to be O(n^2 * log.n); since then it has been improved to O(n^2). Recently we have found an exact solution, in probabilistic programming logic, for the expected time to stabilisation from initial states comprising just three tokens (and it is Theta(n^2)). However, tabulations using the PRISM probabilistic model-checker of expected convergence from demonically selected initial states agree with our exact value for just three tokens. Can it be proved therefore that the three-token case is no faster on average than any of the other odd-number-of-token cases, so that our exact solution will apply in general?
+  </details>
+- **Madhu Parthasarathy**, *Pending Calls and Matching Returns in Temporal Specifications*
+  <details><summary>Abstract</summary>
+  Model checking of linear temporal logic (LTL) specifications with respect to pushdown systems has been shown to be a useful tool for analysis of programs with potentially recursive procedures. LTL, however, can specify only regular properties, and properties such as correctness of procedures with respect to pre and post conditions, that require matching of calls and returns, are not regular. We introduce a temporal logic of calls and returns (Caret) for specification and algorithmic verification of correctness requirements of structured programs. Besides the standard global temporal modalities, Caret admits the abstract-next operator that allows a path to jump from a call to the matching return. Caret also admits the last-caller modality that jumps to the most recent pending call, and such caller modalities allow specification of a variety of security properties that involve inspection of the call-stack. We show that model checking Caret formulas against a pushdown model is decidable, with the same complexity as checking LTL formulas.
+  </details>
+- **Benjamin C. Pierce**, *Harmony: A synchronization framework for tree-structured data*
+  <details><summary>Abstract</summary>
+  Increased use of optimistic data replication has led to increased interest in synchronization technologies. The goal of the Harmony project is to develop a generic framework for synchronizing tree-structured data -- i.e., a tool for propagating updates between different copies, possibly stored in different formats, of tree-shaped data structures. For example, Harmony can be used to synchronize the bookmark files of several different web browsers, allowing bookmarks and bookmark folders to be added, deleted, edited, and reorganized by users running different browsers on disconnected machines. Other Harmony instances under development include synchronizers for calendars, address books, Keynote presentations, structured documents, file systems, and generic XML and HTML. Joint work with Michael Greenwald and Alan Schmitt.
+  </details>
+- **Michel Sintzoff**
+- **Geoffrey Washburn**
+- **Pamela Zave**, *Symmetry in network connections*
+  <details><summary>Abstract</summary>
+  Usually, protocols and features for telecommunications are highly asymmetric -- they make a strong distinction between the initiating and receiving ends. However, experience shows that many feature functions are symmetric, and many end-to-end connections consist of segments set up in alternating directions. The question: how can we organize and analyze network connections, when taking this richer view?
+  </details>
