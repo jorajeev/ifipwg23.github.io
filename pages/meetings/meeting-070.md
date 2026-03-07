@@ -1,11 +1,17 @@
 ---
 layout: page
-title: Meeting 70
+title: "#70: Southampton, Sep 2026"
 location: Southampton, UK
-date: September 7 - 11, 2026
-parent: Meetings
+date: 7–11 September 2026
+parent: "Meetings 60–70"
+grand_parent: Meetings
+nav_order: 930
 ---
 
-<h2>Host: Michael Butler</h2>
+## Meeting 70
 
-## UNDER CONSTRUCTION
+**Host:** Michael Butler  
+**Location:** Southampton, UK  
+**Dates:** 7–11 September 2026
+
+*Program details to be announced.*
